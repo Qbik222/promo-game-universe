@@ -1,87 +1,347 @@
-
 .fav-page.loading
     .spinner-overlay
         .spinner
-    .table
-        .table__tabs
-            .table__tabs-item.active(data-week="1") #[span(data-translate="tableTab") Faza] 1
-            .table__tabs-item(data-week="2") #[span(data-translate="tableTab") Faza] 2
-        .table__head
-            .table__row
-                .table__row-item(data-translate="tablePlace") [ MJESTO ]
-                .table__row-item(data-translate="tableId") [ ID ]
-                .table__row-item(data-translate="tablePoints") [ BODOVI ]
-                .table__row-item(data-translate="tablePrize") [ NAGRADA ]
-        .table__body#table
-            .table__row.place1.you
-                .table__row-item 01 #[span.you(data-translate="you") ti]
-                .table__row-item 4538***
-                .table__row-item 32.9
-                .table__row-item 350 € #[span.table-coin]
-            .table__row.palce2
-                .table__row-item 02
-                .table__row-item 4538***
-                .table__row-item 32.9
-                .table__row-item 350 € #[span.table-coin]
-            .table__row.palce3
-                .table__row-item 03
-                .table__row-item 4538***
-                .table__row-item 32.9
-                .table__row-item 350 € #[span.table-coin]
-            .table__row
-                .table__row-item 04
-                .table__row-item 4538***
-                .table__row-item 32.9
-                .table__row-item 350 € #[span.table-coin]
-            .table__row
-                .table__row-item 05
-                .table__row-item 4538***
-                .table__row-item 32.9
-                .table__row-item 350 € #[span.table-coin]
-            .table__row
-                .table__row-item 06
-                .table__row-item 4538***
-                .table__row-item 32.9
-                .table__row-item 350 € #[span.table-coin]
-            .table__row
-                .table__row-item 07
-                .table__row-item 4538***
-                .table__row-item 32.9
-                .table__row-item 350 € #[span.table-coin]
-            .table__row
-                .table__row-item 08
-                .table__row-item 4538***
-                .table__row-item 32.9
-                .table__row-item 350 € #[span.table-coin]
-            .table__row
-                .table__row-item 09
-                .table__row-item 4538***
-                .table__row-item 32.9
-                .table__row-item 350 € #[span.table-coin]
-            .table__row
-                .table__row-item 10
-                .table__row-item 4538***
-                .table__row-item 32.9
-                .table__row-item 350 € #[span.table-coin]
-        .table__body#tableOther
-            .table__row
-                .table__row-item 38
-                .table__row-item 4538***
-                .table__row-item 32.9
-                .table__row-item 350 € #[span.table-coin]
-            .table__row.you
-                .table__row-item 39 #[span.you(data-translate="you") ti]
-                .table__row-item 4538***
-                .table__row-item 32.9
-                .table__row-item 350 € #[span.table-coin]
-            .table__row
-                .table__row-item 40
-                .table__row-item 4538***
-                .table__row-item 32.9
-                .table__row-item 350 € #[span.table-coin]
+    .welcome
+        .welcome__wrap
+            .welcome__left
+                .welcome__left-wrap
+                    .welcome__title
+                        picture.uk
+                            source(media="(max-width: 1050px)" srcset='img/welcome/title-mob.png')
+                            img(src="img/welcome/title.png" alt="favbet")
+                        picture.en
+                            source(media="(max-width: 1050px)" srcset='img/welcome/title-mob-en.png')
+                            img(src="img/welcome/title-en.png" alt="favbet")
+                    .welcome__found.title(data-translate="welcomeFound") призовий фонд
+                    .welcome__prize.title(data-translate="welcomePrize") #[span до] #[span 10 000 000 ₴] #[span *]
+                    a.welcome__btn.btn.unauth-msg(data-translate="authBtn" href="/login") авторизуйся
+                    button.welcome__btn.btn.part-btn.hide(data-translate="joinBtn") взяти участь
+                    button.welcome__btn.btn.play-btn.hide(data-translate="playBtn") до гри
+                    button.welcome__btn.btn.deposit-btn.hide(data-translate="depositBtn") зробити депозит
+            .welcome__right
+                .welcome__pers
+                    picture.welcome__pers-item.welcome__pers-item--left
+                        source(media="(max-width: 600px)" srcset='img/welcome/pers-left-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/welcome/pers-left-mob.png')
+                        source(media="(max-width: 1050px)" srcset='img/welcome/pers-left-tab.png')
+                        img(src="img/welcome/pers-left.png" alt="Favbet")
+                    picture.welcome__pers-item.welcome__pers-item--center
+                        source(media="(max-width: 600px)" srcset='img/welcome/pers-center-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/welcome/pers-center-mob.png')
+                        source(media="(max-width: 1050px)" srcset='img/welcome/pers-left-tab.png')
+                        img(src="img/welcome/pers-center.png" alt="Favbet")
+                    picture.welcome__pers-item.welcome__pers-item--right
+                        source(media="(max-width: 600px)" srcset='img/welcome/pers-right-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/welcome/pers-right-mob.png')
+                        source(media="(max-width: 1050px)" srcset='img/welcome/pers-right-tab.png')
+                        img(src="img/welcome/pers-right.png" alt="Favbet")
+                    picture.welcome__pers-item.welcome__pers-item--light
+                        source(media="(max-width: 600px)" srcset='img/welcome/light-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/welcome/light-mob.png')
+                        img(src="img/welcome/light.png" alt="Favbet")
+                    picture.welcome__pers-item.welcome__pers-item--box-left
+                        source(media="(max-width: 600px)" srcset='img/welcome/box-left-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/welcome/box-left-mob.png')
+                        img(src="img/welcome/box-left.png" alt="Favbet")
+                    picture.welcome__pers-item.welcome__pers-item--coins-front
+                        source(media="(max-width: 600px)" srcset='img/welcome/coins-front-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/welcome/coins-front-mob.png')
+                        img(src="img/welcome/coins-front.png" alt="Favbet")
+                    picture.welcome__pers-item.welcome__pers-item--coins-back
+                        source(media="(max-width: 600px)" srcset='img/welcome/coins-back-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/welcome/coins-back-mob.png')
+                        img(src="img/welcome/coins-back.png" alt="Favbet")
+                    picture.welcome__pers-item.welcome__pers-item--coin
+                        source(media="(max-width: 600px)" srcset='img/welcome/coin-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/welcome/coin-mob.png')
+                        img(src="img/welcome/coin.png" alt="Favbet")
+                    picture.welcome__pers-item.welcome__pers-item--box
+                        source(media="(max-width: 600px)" srcset='img/welcome/box-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/welcome/box-mob.png')
+                        img(src="img/welcome/box.png" alt="Favbet")
 
+    .prize
+        .prize__title.title(data-translate="prizeTitle") Призи
+        .prize__slider
+            .cards
+                //- Картка 1
+                .card._left2
+                    .card__popup
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize1-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize1-mob.png')
+                        img(src="img/prize/prize1.png" alt="Favbet")
+                    .card__text(data-translate="textPrize1") Навушники SteelSeries Arctis
+                    .card__amount(data-translate="amountPrize1") 15 штук
+
+                //- Картка 2
+                .card._left1
+                    .card__popup
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize2-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize2-mob.png')
+                        img(src="img/prize/prize2.png" alt="Favbet")
+                    .card__text(data-translate="textPrize2") Консоль Nintendo Switch 2
+                    .card__amount(data-translate="amountPrize2") 10 штук
+
+                //- Картка 3
+                .card._active
+                    .card__popup
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize3-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize3-mob.png')
+                        img(src="img/prize/prize3.png" alt="Favbet")
+                    .card__text(data-translate="textPrize3") Телефон Apple iPhone 16 Pro Max
+                    .card__amount(data-translate="amountPrize3") 5 штук
+
+                //- Картка 4
+                .card._right1
+                    .card__popup
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize4-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize4-mob.png')
+                        img(src="img/prize/prize4.png" alt="Favbet")
+                    .card__text(data-translate="textPrize4") Окуляри віртуальної реальності PS VR2
+                    .card__amount(data-translate="amountPrize4") 10 штук
+
+                //- Картка 5
+                .card._right2
+                    .card__popup
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize5-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize5-mob.png')
+                        img(src="img/prize/prize5.png" alt="Favbet")
+                    .card__text(data-translate="textPrize5") Ігрова приставка PlayStation 5 Slim
+                    .card__amount(data-translate="amountPrize5") 10 штук
+
+                //- Картка 6
+                .card
+                    .card__popup
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize6-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize6-mob.png')
+                        img(src="img/prize/prize6.png" alt="Favbet")
+                    .card__text(data-translate="textPrize6") Ноутбук Gigabyte Aorus 16X 9SG
+                    .card__amount(data-translate="amountPrize6") 10 штук
+
+                //- Картка 7
+                .card
+                    .card__popup
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize7-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize7-mob.png')
+                        img(src="img/prize/prize7.png" alt="Favbet")
+                    .card__text(data-translate="textPrize7") Електросамокат Proove Model X-City
+                    .card__amount(data-translate="amountPrize7") 10 штук
+
+                //- Картка 8
+                .card
+                    .card__popup
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize8-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize8-mob.png')
+                        img(src="img/prize/prize8.png" alt="Favbet")
+                    .card__text(data-translate="textPrize8") Телевізор Samsung OLED 77
+                    .card__amount(data-translate="amountPrize8") 10 штук
+
+                //- Картка 9
+                .card
+                    .card__popup
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize9-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize9-mob.png')
+                        img(src="img/prize/prize9.png" alt="Favbet")
+                    .card__text(data-translate="textPrize9") ХХ FS
+
+                //- Картка 10
+                .card
+                    .card__popup
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize10-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize10-mob.png')
+                        img(src="img/prize/prize10.png" alt="Favbet")
+                    .card__text(data-translate="textPrize10") Страховка ставки ХХХХ
+                //- Картка 11
+                .card
+                    .card__popup
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize11-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize11-mob.png')
+                        img(src="img/prize/prize11.png" alt="Favbet")
+                    .card__text(data-translate="textPrize11") Пощастить наступний раз
+                //- Картка 12
+                .card
+                    .card__popup
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize12-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize12-mob.png')
+                        img(src="img/prize/prize12.png" alt="Favbet")
+                    .card__text(data-translate="textPrize12") Відкрити ще
+            .prize__move
+                .prize__move-left
+                .prize__move-right
+        .prize__dots
+            .prize__dots-item
+            .prize__dots-item
+            .prize__dots-item
+            .prize__dots-item
+            .prize__dots-item
+            .prize__dots-item
+            .prize__dots-item
+            .prize__dots-item
+            .prize__dots-item
+            .prize__dots-item
+            .prize__dots-item
+            .prize__dots-item
+    .box
+        .box__left
+            picture.box__logo
+                source(media="(max-width: 600px)" srcset='img/box/logo-mob.png')
+                source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/box/logo-mob.png')
+                img(src="img/box/logo.png" alt="Favbet")
+            .box__coins
+                .box__coins-item
+                    img(src="img/box/coins/coin1.png" alt="favbet")
+                .box__coins-item
+                    img(src="img/box/coins/coin2.png" alt="favbet")
+                .box__coins-item
+                    img(src="img/box/coins/coin3.png" alt="favbet")
+                .box__coins-item
+                    img(src="img/box/coins/coin4.png" alt="favbet")
+                .box__coins-item
+                    img(src="img/box/coins/coin5.png" alt="favbet")
+                .box__coins-item
+                    img(src="img/box/coins/coin6.png" alt="favbet")
+                .box__coins-item
+                    img(src="img/box/coins/coin7.png" alt="favbet")
+
+
+
+            .box__open
+                picture.box__open-cap
+                    source(media="(max-width: 600px)" srcset='img/box/open-cap-mob.png')
+                    source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/box/open-cap-mob.png')
+                    img(src="img/box/open-cap.png" alt="Favbet")
+                .box__open-body
+                    source(media="(max-width: 600px)" srcset='img/box/open-body-mob.png')
+                    source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/box/open-body-mob.png')
+                    img(src="img/box/open-body.png" alt="Favbet")
+        .box__right
+            .box__right-title(data-translate="yourProgress") твій прогрес-бар
+            .box__progress
+                .box__progress-body
+                .box__progress-counter 20/1000
+            .box__last
+                .box__last-text(data-translate="lastUpd") останнє оновлення:
+                .box__last-date ХХ.ХХ.2025 о хх:хх
+            .box__right-wrap
+                a.box__btn.btn.unauth-msg(data-translate="authBtn" href="/login") авторизуйся
+                button.box__btn.btn.part-btn.hide(data-translate="joinBtn") взяти участь
+                button.box__btn.btn-open.play-btn.hide
+                    span.box__btn-text(data-translate="openBtn") відкрити
+                    span.box__btn-counter(data-translate="openCounter") 2 відкриття
+                button.box_btn.btn.deposit-btn.hide(data-translate="depositBtn") зробити депозит
+            .box__right-bottom
+                .box__right-bottom-icon
+                .box__right-bottom-text(data-transpate="moreSpins") Більше оберт — більше Фавбоксів.
+        .box__bottom
+            .box__bottom-left
+                .box__bottom-icon
+                    img(src="img/box/icon-casino.png" alt="favbet")
+                a.box__bottom-btn.btn(data-translate="casinoBtn" href="#") грати в казино
+            .box__bottom-separator
+                img(src="img/box/icon-separator.png" alt="favbet")
+            .box__bottom-right
+                .box__bottom-icon
+                    img(src="img/box/icon-sport.png" alt="favbet")
+                a.box__bottom-btn.btn(data-translate="sportBtn" href="#") ставити на спорт
+    .drop.drop--spins
+        details.dropdown
+            summary(data-translate="mySpins") Історія відкритих Фавбоксів
+            .drop-txt
+                .drop-txt-list.my-spins
+                    .spins-row
+                        .spins-row-head
+                            .content-date(data-translate="myBetDate") Дата
+                            .content-prize(data-translate="myBetId") Приз
+                    .spins-row
+                        .spins-row-item
+                            .content-date 18.08
+                            .content-prize Навушники SteelSeries Arctis
+                    .spins-row
+                        .spins-row-item
+                            .content-date 18.08
+                            .content-prize Консоль Nintendo Switch 2
+                    .spins-row
+                        .spins-row-item
+                            .content-date 18.08
+                            .content-prize Телефон Apple iPhone 16 Pro Max
+                    .spins-row
+                        .spins-row-item
+                            .content-date 18.08
+                            .content-prize Окуляри віртуальної реальності PS VR2
+                    .spins-row
+                        .spins-row-item
+                            .content-date 18.08
+                            .content-prize Ігрова приставка PlayStation 5 Slim
+                    .spins-row
+                        .spins-row-item
+                            .content-date 18.08
+                            .content-prize Ноутбук Gigabyte Aorus 16X 9SG
+                    .spins-row
+                        .spins-row-item
+                            .content-date 18.08
+                            .content-prize Електросамокат Proove Model X-City
+                    .spins-row
+                        .spins-row-item
+                            .content-date 18.08
+                            .content-prize Телевізор Samsung OLED 77
+                    .spins-row
+                        .spins-row-item
+                            .content-date 18.08
+                            .content-prize XX FS
+                    .spins-row
+                        .spins-row-item
+                            .content-date 18.08
+                            .content-prize Страховка ставки XXXX
+                    .spins-row
+                        .spins-row-item
+                            .content-date 18.08
+                            .content-prize Пощастить наступний раз
+                    .spins-row
+                        .spins-row-item
+                            .content-date 18.08
+                            .content-prize Відкрити ще
+
+                    .no-spins.hide(data-translate="noBets") &#8203;
     .drop
         details.dropdown
-            summary(data-translate="rulseBtn")
+            summary(data-translate="openGuideBtn") Як відкрити Фавбокс
+            .drop-txt
+                .drop-txt-list(data-translate="openGuide")
+                    p Ставки на футбол – рекомендований варіант для новачків світу беттінга.
+                    p.circle За межами стадіонів фанати купували за мінімальною ціною (згодом квитки почали поширюватися через газети, їх вирізали);
+                    p.circle У картки вболівальниками вносилися ті результати майбутніх матчів «ігри номер один», які, на їхню думку, були вірогіднішими;
+                    p.circle Купони передавалися агенту-збиральнику пулів або відправлялися до компанії-організатора поштою.
+                    p Спеціалізована контора гарантувала, що протягом тижня буде щонайменше один переможець. Щасливчики визначалися за кількістю набраних балів серед усіх фанатів, які надіслали картки.
+    .drop
+        details.dropdown
+            summary(data-translate="bonusInfoBtn") Які бонуси та фізичні призи я можу отримати?
+            .drop-txt
+                .drop-txt-list(data-translate="bonusInfo")
+                    p Ставки на футбол – рекомендований варіант для новачків світу беттінга.
+                    p.circle За межами стадіонів фанати купували за мінімальною ціною (згодом квитки почали поширюватися через газети, їх вирізали);
+                    p.circle У картки вболівальниками вносилися ті результати майбутніх матчів «ігри номер один», які, на їхню думку, були вірогіднішими;
+                    p.circle Купони передавалися агенту-збиральнику пулів або відправлялися до компанії-організатора поштою.
+                    p Спеціалізована контора гарантувала, що протягом тижня буде щонайменше один переможець. Щасливчики визначалися за кількістю набраних балів серед усіх фанатів, які надіслали картки.
+    .drop
+        details.dropdown
+            summary(data-translate="rulseBtn") Офіційні правила
             .drop-txt
                 .drop-txt-list(data-translate="rules")
+                    p Ставки на футбол – рекомендований варіант для новачків світу беттінга.
+                    p.circle За межами стадіонів фанати купували за мінімальною ціною (згодом квитки почали поширюватися через газети, їх вирізали);
+                    p.circle У картки вболівальниками вносилися ті результати майбутніх матчів «ігри номер один», які, на їхню думку, були вірогіднішими;
+                    p.circle Купони передавалися агенту-збиральнику пулів або відправлялися до компанії-організатора поштою.
+                    p Спеціалізована контора гарантувала, що протягом тижня буде щонайменше один переможець. Щасливчики визначалися за кількістю набраних балів серед усіх фанатів, які надіслали картки.
+    .fav-page__bottom(data-translate="bottomText") *Загальний призовий фонд акції «ВСЕСВІТ ГРИ» складається з бонусних пропозицій та фізичних призів на загальну суму до 10 000 000 ₴. Вид, формат та розмір бонусних пропозицій (та/або подарунків) визначається і пропонується учасникам виключно на розсуд Організатора. Деталі на сайті www.favbet.ua. Період дії акції – з ХХ.08.2025 до ХХ.09.2025 року

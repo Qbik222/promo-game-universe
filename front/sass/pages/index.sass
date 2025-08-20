@@ -2,27 +2,317 @@
   display: none !important
 
 body.light
-  background: $blue
+  background: $bg
 
 body
   overscroll-behavior: none
   -webkit-tap-highlight-color: transparent
-  background: $blue
+  background: $bg
   img
     max-width: 100%
     height: auto
   & > *
     font-family: inherit
 
+.title
+  font-family: $font-fav-display-bold
+  color: $white
+  text-shadow: -1px -1px 0 rgba(250, 15, 99, 0.80), 1px 1px 0 rgba(0, 255, 246, 0.90), 0 0 28px rgba(0, 192, 255, 0.90)
+
+.btn
+  display: flex
+  align-items: center
+  justify-content: center
+  background: url("../img/btn.png") no-repeat 50% 50%/contain
+  min-height: 80px
+  min-width: 230px
+  font-family: $font-roboto-cond-bold
+  font-size: 17px
+  text-transform: uppercase
+  color: $white
+
 .fav-page
-  background: $blue
+  background: $bg
   display: flex
   flex-direction: column
   align-items: center
   overflow: hidden
 
+.welcome
+  min-width: 1280px
+  max-width: 1280px
+  height: 340px
+  background: url("../img/welcome/bg.png") no-repeat 50% 0/cover
+  position: relative
+  &::after
+    content: ""
+    display: block
+    width: 100%
+    height: 30%
+    left: 0
+    bottom: 0
+    background: linear-gradient(0deg, rgba($bg, 1) 10%, rgba($bg, 0) 100%)
+    z-index: 0
+    position: absolute
+  &::before
+    content: ""
+    display: block
+    width: 1080px
+    height: 30px
+    position: absolute
+    bottom: 0
+    left: 50%
+    transform: translate(-50%, 50%)
+    z-index: 3
+    pointer-events: none
+    background: url("../img/welcome/line-bottom.png") no-repeat 50% 0/contain
+  &__wrap
+    display: flex
+    align-items: center
+    justify-content: center
+    position: relative
+    height: 100%
+    width: 100%
+    overflow: hidden
+    z-index: 1
+    &::before, &::after
+      content: ""
+      display: block
+      height: 100%
+      width: 25%
+      position: absolute
+      bottom: 0
+      z-index: 0
+    &::before
+      left: 0
+      background: linear-gradient(90deg, rgba($bg, 1) 10%, rgba($bg, 0) 100%)
+    &::after
+      right: 0
+      background: linear-gradient(-90deg, rgba($bg, 1) 10%, rgba($bg, 0) 100%)
+  &__left
+    width: 640px
+    padding: 25px 0 0 70px
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
+    height: 100%
+    z-index: 2
+    &-wrap
+      max-width: 325px
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: center
+  &__right
+    width: 640px
+    height: 100%
+    z-index: 1
+  &__pers
+    position: relative
+    width: 100%
+    height: 100%
+    display: flex
+    align-items: flex-end
+    margin-left: -30px
+    &-item
+      position: absolute
+      &--left, &--right, &--center
+        position: relative
+      &--light
+        z-index: 0
+      &--coins-back
+        z-index: 1
+        max-width: 426px
+        left: -11px
+        bottom: -17px
+      &--coins-front
+        z-index: 5
+        max-width: 488px
+        left: -32px
+        bottom: 15px
+      &--box-left
+        z-index: 2
+        max-width: 322px
+        left: -260px
+        bottom: -90px
+      &--box
+        z-index: 2
+        right: 210px
+        top: 110px
+        max-width: 51px
+      &--coin
+        z-index: 2
+        left: -280px
+        top: -61px
+        max-width: 165px
+      &--left
+        z-index: 3
+        max-width: 197px
+        margin-right: -73px
+        margin-bottom: -5px
+      &--right
+        z-index: 3
+        max-width: 197px
+        margin-left: -190px
+        margin-bottom: -5px
+      &--center
+        z-index: 4
+        max-width: 283px
+        margin-bottom: -5px
+  &__found
+    font-size: 24px
+    margin-top: -20px
+  &__prize
+    display: flex
+    align-items: flex-end
+    margin-top: -3px
+    span:nth-child(1)
+      text-transform: lowercase
+      font-size: 24px
+      line-height: 24px
+      margin: 0 8px 3px 0
+    span:nth-child(2)
+      font-size: 48px
+      line-height: 48px
+    span:nth-child(3)
+      font-size: 24px
+      line-height: 24px
+      align-self: flex-start
+      font-family: $font-roboto-cond-bold
+      margin: 3px 0 0 5px
+.card
+  background: url("../img/prize/bg.png") no-repeat 50% 50%/cover
+  background-size: 100% 100%
+  width: 228px
+  height: 300px
+  display: flex
+  flex-direction: column
+  align-self: center
+  justify-content: flex-start
+  transition: all .5s ease-in-out
+  &__popup
+    display: none
+    width: 32px
+    height: 32px
+    background: url("../img/popup-icon.png") no-repeat 50% 50%/contain
+    position: absolute
+    right: 8px
+    top: 8px
+    z-index: 3
+    transition: opacity .5s ease-in-out
+    &:hover
+      cursor: pointer
+      opacity: .7
 
-
+  &__text
+    text-align: center
+    color: $white
+    font-family: $font-roboto-cond-med
+    font-size: 24px
+    max-width: 210px
+    align-self: center
+  &__amount
+    text-align: center
+    margin-top: 8px
+    font-size: 18px
+    font-family: $font-roboto-cond-reg
+    color: $white
+.cards
+  min-width: 750px
+  max-width: 750px
+  height: 300px
+  position: relative
+  perspective: 1000px
+  perspective-origin: 50% 50%
+  margin: 0 auto
+  .card
+    opacity: 0
+    pointer-events: none
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+    backdrop-filter: blur(2px)
+    z-index: 0
+    &._active
+      opacity: 1
+      background: url("../img/prize/bg-active.png") no-repeat 50% 50%/cover
+      pointer-events: initial
+      z-index: 3
+      .card__popup
+        display: block
+    &._right1
+      opacity: 1
+      transform: translate(-50%, -50%) rotateY(-20deg) scale(.9)
+      left: 70%
+      z-index: 2
+    &._right2
+      opacity: 1
+      transform: translate(-50%, -50%) rotateY(-50deg) scale(.8)
+      left: 89%
+      z-index: 1
+    &._left1
+      opacity: 1
+      left: 30%
+      transform: translate(-50%, -50%) rotateY(20deg) scale(.9)
+      z-index: 2
+    &._left2
+      opacity: 1
+      left: 11%
+      transform: translate(-50%, -50%) rotateY(50deg) scale(.8)
+      z-index: 1
+.prize
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding: 20px 0
+  &__title
+    font-size: 32px
+    font-family: $font-fav-display-med-reg
+    margin-bottom: 24px
+  &__dots
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 4px
+    margin-top: 25px
+    &-item
+      width: 4px
+      height: 4px
+      border-radius: 50%
+      background: $white
+      transition: all .5s ease-in-out
+      opacity: .2
+      &._active
+        opacity: 1
+        background: $magenta
+  &__slider
+    min-width: 870px
+    max-width: 870px
+    position: relative
+  &__move
+    width: 100%
+    height: 100%
+    position: absolute
+    top: 0
+    left: 0
+    display: flex
+    z-index: 2
+    pointer-events: none
+    justify-content: space-between
+    align-items: center
+    &-left, &-right
+      pointer-events: initial
+      width: 42px
+      height: 145px
+      transition: all .5s ease-in-out
+      background: url("../img/prize/move-arrow.png") no-repeat 50% 50%/contain
+      &:hover
+        cursor: pointer
+        background: url("../img/prize/move-arrow-hover.png") no-repeat 50% 50%/contain
+    &-right
+      transform: scale(-1, 1)
 // loader
 
 .spinner-overlay
@@ -192,6 +482,76 @@ body
       display: flex
       flex-direction: column
       gap: 15px
+      &.my-spins
+        display: flex
+        .no-spins
+          display: block
+          color: $white
+          text-align: center
+          //font-family: $font-favbet-text-reg
+          font-size: 16px
+          line-height: 26px
+        .spins-row
+          display: flex
+          flex-direction: column
+          justify-content: space-between
+          width: 100%
+          gap: 2px
+          &-head
+            .content-date
+              min-width: 80px
+          &-item
+            .content-date
+              min-width: 60px
+          &-item, &-head
+            display: flex
+            justify-content: flex-start
+            padding: 7px 20px
+          //border-radius: 13px
+          &-item
+            .content-status
+              width: 30px
+              height: 30px
+              background: url("https://fav-prom.com/html/football-challange-2/img/undone.png") no-repeat 0 0/contain
+              &._done
+                background: url("https://fav-prom.com/html/football-challange-2/img/done.png") no-repeat 0 0/contain
+
+          &-head
+            background: transparent
+            opacity: .2
+          &-item
+            //background: rgba($white, .05)
+            background: rgba(0, 0, 0, 0.20)
+            border-radius: 8px
+            display: flex
+            align-items: center
+          .content-date, .content-prize, .content-status
+            color: $white
+            //font-family: $font-favbet-text-reg
+            font-size: 16px
+            line-height: 26px
+            br
+              display: none
+            @media screen and (max-width: 600px)
+
+              &:nth-child(1)
+                font-size: 14px
+                line-height: 20px
+              &:nth-child(2)
+                font-size: 12px
+                line-height: 18px
+                text-align: right
+          .content-date
+            margin-right: 10px
+            //min-width: 60px
+            max-width: fit-content
+            padding: 0
+            @media screen and (max-width: 600px)
+              margin-right: 20px
+            @media screen and (max-width: 337px)
+              margin-right: 10px
+          .content-prize
+            margin-left: auto
       table
         border-spacing: 0
         border-color: $white
@@ -226,7 +586,7 @@ body
 .retreat1
   padding-left: 30px
   strong
-    font-family: $font-suisse-intl-bold
+    font-family: $font-roboto-cond-bold
     color: $white
 .circle
   padding-left: 35px

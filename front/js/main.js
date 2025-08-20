@@ -460,6 +460,114 @@
         });
     }
 
+
+
+//slider
+
+    const buttonsRight = document.querySelectorAll('.prize__move-right'),
+        buttonsLeft = document.querySelectorAll('.prize__move-left'),
+        slider = document.querySelector('.cards'),
+        items = document.querySelectorAll('.card'),
+        totalItems = items.length,
+        dots = document.querySelectorAll('.prize__dots-item')
+
+    let currentIndex = 2;
+    let startX = 0;
+    let isDragging = false;
+
+    updateSlider()
+
+    function updateSlider() {
+        items.forEach((item, index) => {
+            const distance = (index - currentIndex + totalItems) % totalItems;
+
+            item.classList.remove(
+                '_left', '_left1', '_left2',
+                '_right', '_right1', '_right2',
+                '_active', '_hide-slide'
+            );
+
+            if (index === currentIndex) {
+                item.classList.add('_active');
+                return;
+            }
+
+            if (distance === 1) {
+                item.classList.add('_right1');
+            } else if (distance === 2) {
+                item.classList.add('_right2');
+            } else if (distance === totalItems - 1) {
+                item.classList.add('_left1');
+            } else if (distance === totalItems - 2) {
+                item.classList.add('_left2');
+            } else {
+                item.classList.add('_hide-slide');
+            }
+        });
+        updateDots()
+    }
+
+    function updateDots(){
+        dots.forEach((item, i) => {
+            item.classList.remove('_active');
+            if(i === currentIndex) {
+                item.classList.add('_active');
+            }
+        })
+    }
+
+    function moveSlider(offset) {
+        currentIndex = (currentIndex + offset + totalItems) % totalItems;
+        updateSlider();
+    }
+
+    function handleStart(event) {
+        isDragging = true;
+        startX = event.clientX || event.touches[0].clientX;
+    }
+
+    function handleMove(event) {
+        if (!isDragging) return;
+
+        const currentX = event.clientX || event.touches[0].clientX;
+        const diffX = currentX - startX;
+
+        if (Math.abs(diffX) > 50) {
+            moveSlider(diffX > 0 ? -1 : 1);
+            isDragging = false;
+        }
+    }
+
+    function handleEnd() {
+        isDragging = false;
+    }
+
+    buttonsLeft.forEach(btn  => {
+        btn.addEventListener('click', () => {
+            moveSlider(-1);
+            btn.style.pointerEvents = 'none';
+            setTimeout(() => { btn.style.pointerEvents = 'initial'; }, 1000);
+        })
+    })
+    buttonsRight.forEach(btn  => {
+        btn.addEventListener('click', () => {
+            moveSlider(1);
+            btn.style.pointerEvents = 'none';
+            setTimeout(() => { btn.style.pointerEvents = 'initial'; }, 1000);
+        })
+    })
+
+    slider.addEventListener('mousedown', handleStart);
+    slider.addEventListener('touchstart', handleStart);
+
+    document.addEventListener('mousemove', handleMove);
+    document.addEventListener('touchmove', handleMove);
+
+    document.addEventListener('mouseup', handleEnd);
+    document.addEventListener('touchend', handleEnd);
+
+//slider
+
     // loadTranslations()
     //     .then(init) // запуск ініту сторінки
 
