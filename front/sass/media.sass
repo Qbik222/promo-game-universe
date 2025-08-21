@@ -1,55 +1,272 @@
 @media screen and (max-width: 1050px)
-  ._title
-    font-size: 20px
-    line-height: 20px
-  ._container
-    max-width: 725px
-    min-width: 725px
-  .bet
-    &__text
-      font-size: 11px
-    &__title
-      padding: 2px 0 2px 7px
-    &__btn
-      &-item
-        font-size: 11px
-    &__column
-      max-width: 350px
-      &-name
-        margin-left: 4px
-        &-item
-          &:nth-child(1)
-            font-size: 12px
-          &:nth-child(2)
-            font-size: 10px
-      &-btn
-        font-size: 12px
-        padding: 4px
-        &::before
-          bottom: -14px
-          left: -9px
-      &-you
-        margin-right: 25px
-        font-size: 12px
-  .results
-    &__subtitle
-      max-width: 335px
-    &__top
-      scale: .85
-      transform-origin: bottom right
-      right: 10px
-      top: 20px
-    &__you
-      max-height: 50px
-      &-pers
-        max-width: 85px
-        margin: 0 2px -3px 10px
-    &__popup
-      &-text
-        font-size: 11px
+  .welcome
+     &__wrap
+       display: flex
+       justify-content: center
+       margin: 0 auto
+       padding: 0
+     &__left
+       width: 390px
+       margin-left: auto
+     &__right
+       width: 680px
+  .box
+    min-width: 790px
+    max-width: 790px
+    height: auto
+    &__left
+      left: 0
+    &__open
+      max-width: 93px
+      bottom: 116px
+      &-cap
+        max-width: 89px
+        left: 6px
+        top: 22px
+    &__right
+      background: transparent
+      width: 460px
+      height: 255px
+      margin-top: 25px
+      padding-bottom: 0
+    &__bottom
+      margin-top: 0
+      &-left, &-right
+        width: 365px
+        height: 105px
+      &-icon
+        max-width: 100px
+        margin-right: -10px
+      &-separator
+        max-width: 30px
+        margin: 0 -13px
+        z-index: 3
+
+@media screen and (max-width: 900px)
+  .prize
+    &__move
+      display: none
+
+
+@media screen and (max-width: 767px)
+  .prize
+    &__slider
+      transform: scale(.8)
+      margin: -30px 0
+
+@media screen and (max-width: 720px)
+  .welcome
+    transform: scale(.9)
+    transform-origin: top center
+    margin-bottom: -40px
+  .box
+    transform: scale(.9)
+    margin: -40px 0 -20px 0
+
+@media screen and (max-width: 600px)
+  .title
+    text-shadow: -0.548px -0.548px 0 rgba(250, 15, 99, 0.80), 0.548px 0.548px 0 rgba(0, 255, 246, 0.90), 0 0 15.335px rgba(0, 192, 255, 0.90)
+  .btn
+    min-width: 145px
+    min-height: 52px
+    font-size: 12px
+  .welcome
+    max-width: 505px
+    min-width: 505px
+    height: 200px
+    margin: 0
+    transform: scale(1)
+    &__found
+      font-size: 13px
+      margin-top: -10px
     &__prize
-      padding: 10px 17px 5px 0
-      &-amount
-        font-size: 20px
-      &-font
-        font-size: 17px
+      margin-top: 0
+      span:nth-child(1)
+        font-size: 13px
+        line-height: 13px
+        margin: 0 4px 2px 0
+      span:nth-child(2)
+        font-size: 26px
+        line-height: 26px
+      span:nth-child(3)
+        font-size: 13px
+        line-height: 13px
+        margin: 1px 0 0 3px
+    &__left
+      padding: 0
+      width: 205px
+      margin: 0
+      &-wrap
+        max-width: 180px
+    &__right
+      width: 190px
+      margin-left: -25px
+    &__btn
+      margin-top: 5px
+    &__pers
+      &-item
+        &--center
+          max-width: 150px
+          min-width: 150px
+        &--left
+          max-width: 105px
+          min-width: 105px
+          margin-right: -40px
+        &--right
+          max-width: 105px
+          min-width: 105px
+          margin-left: -90px
+        &--light
+          max-width: 258px
+          min-width: 258px
+          left: -30px
+          top: 0
+          border-radius: 50%
+        &--coins-back
+          max-width: 245px
+          min-width: 245px
+          left: -10px
+          bottom: -15px
+        &--coins-front
+          max-width: 285px
+          min-width: 285px
+          left: -36px
+          bottom: auto
+          top: 0
+          z-index: 2
+        &--box-left
+          max-width: 155px
+          min-width: 155px
+          left: -95px
+          bottom: -56px
+          z-index: 3
+        &--box
+          max-width: 27px
+          min-width: 27px
+          top: 90px
+          right: -10px
+        &--coin
+          max-width: 89px
+          min-width: 89px
+          left: 15px
+          top: -35px
+  .prize
+    &__slider
+      transform: none
+      margin: 0
+    &__title
+      font-size: 18px
+      margin-bottom: 10px
+    &__dots
+      margin-top: 15px
+  .box
+    margin: 0
+    transform: none
+    max-width: 400px
+    min-width: 400px
+    padding: 0
+    display: flex
+    flex-direction: column
+    align-items: center
+    &__left
+      position: absolute
+      top: 0
+      left: -50px
+    &__right
+      min-width: 375px
+      max-width: 375px
+      height: auto
+      padding: 45px 0 0 0
+      display: flex
+      flex-direction: column
+      align-items: flex-end
+      position: relative
+      align-self: center
+      &-title
+        width: 190px
+      &-wrap
+        width: 190px
+        position: relative
+        right: 9px
+        margin-top: 10px
+      &-info
+        display: none
+      &-mob
+        min-width: 355px
+        max-width: 355px
+        min-height: 95px
+        position: relative
+        align-self: center
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        background: url("../img/box/box-right-mob-frame.png") no-repeat 0 0/cover
+        background-size: 100% 100%
+        margin-top: 55px
+        .box__right-info
+          display: block
+          max-width: 90%
+          font-size: 13px
+          text-align: center
+          margin-bottom: 7px
+    &__last
+      margin-top: 5px
+      width: 190px
+      &-text, &-date
+        font-size: 9px
+    &__progress
+      margin-top: 5px
+      width: 190px
+      &-body
+        width: 125px
+        height: 15px
+      &-counter
+        font-size: 12px
+        margin-left: 7px
+    &__bottom
+      margin: 10px 0 0 0
+      width: 355px
+      justify-content: space-between
+      &-left, &-right
+        min-width: 170px
+        max-width: 170px
+        height: 160px
+        flex-direction: column
+      &-separator
+        max-width: 50px
+        margin: 0 -20px
+  .cards
+    max-width: 400px
+    min-width: 400px
+    height: 150px
+  .card
+    min-width: 114px
+    max-width: 114px
+    height: 150px
+    &__text
+      font-size: 12px
+      max-width: 105px
+    &__amount
+      font-size: 9px
+      margin-top: 4px
+    &__popup
+      width: 16px
+      height: 16px
+      right: 4px
+      top: 4px
+
+@media screen and (max-width: 376px)
+  .welcome
+    transform: scale(.9)
+    margin-bottom: -20px
+  .box
+    transform: scale(.9)
+    margin: -30px 0 -20px 0
+
+@media screen and (max-width: 350px)
+  .welcome
+    transform: scale(.8)
+  .box
+    transform: scale(.8)
+    margin: -60px 0 -40px 0

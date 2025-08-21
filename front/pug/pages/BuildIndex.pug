@@ -28,7 +28,7 @@
                     picture.welcome__pers-item.welcome__pers-item--center
                         source(media="(max-width: 600px)" srcset='img/welcome/pers-center-mob.png')
                         source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/welcome/pers-center-mob.png')
-                        source(media="(max-width: 1050px)" srcset='img/welcome/pers-left-tab.png')
+                        source(media="(max-width: 1050px)" srcset='img/welcome/pers-center-tab.png')
                         img(src="img/welcome/pers-center.png" alt="Favbet")
                     picture.welcome__pers-item.welcome__pers-item--right
                         source(media="(max-width: 600px)" srcset='img/welcome/pers-right-mob.png')
@@ -195,10 +195,7 @@
             .prize__dots-item
     .box
         .box__left
-            picture.box__logo
-                source(media="(max-width: 600px)" srcset='img/box/logo-mob.png')
-                source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/box/logo-mob.png')
-                img(src="img/box/logo.png" alt="Favbet")
+            .box__logo
             .box__coins
                 .box__coins-item
                     img(src="img/box/coins/coin1.png" alt="favbet")
@@ -214,9 +211,6 @@
                     img(src="img/box/coins/coin6.png" alt="favbet")
                 .box__coins-item
                     img(src="img/box/coins/coin7.png" alt="favbet")
-
-
-
             .box__open
                 picture.box__open-cap
                     source(media="(max-width: 600px)" srcset='img/box/open-cap-mob.png')
@@ -227,12 +221,13 @@
                     source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/box/open-body-mob.png')
                     img(src="img/box/open-body.png" alt="Favbet")
         .box__right
-            .box__right-title(data-translate="yourProgress") твій прогрес-бар
+            .box__right-title.title(data-translate="yourProgress") твій прогрес-бар
             .box__progress
                 .box__progress-body
-                .box__progress-counter 20/1000
+                    .box__progress-bar
+                .box__progress-counter.title 1000/1000
             .box__last
-                .box__last-text(data-translate="lastUpd") останнє оновлення:
+                .box__last-text(data-translate="lastUpd") Oстаннє оновлення:
                 .box__last-date ХХ.ХХ.2025 о хх:хх
             .box__right-wrap
                 a.box__btn.btn.unauth-msg(data-translate="authBtn" href="/login") авторизуйся
@@ -241,9 +236,12 @@
                     span.box__btn-text(data-translate="openBtn") відкрити
                     span.box__btn-counter(data-translate="openCounter") 2 відкриття
                 button.box_btn.btn.deposit-btn.hide(data-translate="depositBtn") зробити депозит
-            .box__right-bottom
-                .box__right-bottom-icon
-                .box__right-bottom-text(data-transpate="moreSpins") Більше оберт — більше Фавбоксів.
+                .box__right-info(data-translate="boxInfo") Кожна 1 000 ₴ виграшних ставок = 1 відкриття Фавбоксу.
+            .box__right-mob
+                .box__right-info(data-translate="boxInfo") Кожна 1 000 ₴ виграшних ставок = 1 відкриття Фавбоксу.
+                .box__right-bottom
+                    .box__right-bottom-icon
+                    .box__right-bottom-text(data-transpate="moreSpins") Більше оберт — більше Фавбоксів.
         .box__bottom
             .box__bottom-left
                 .box__bottom-icon
@@ -339,6 +337,12 @@
             summary(data-translate="rulseBtn") Офіційні правила
             .drop-txt
                 .drop-txt-list(data-translate="rules")
+                    p Ставки на футбол – рекомендований варіант для новачків світу беттінга.
+                    p.circle За межами стадіонів фанати купували за мінімальною ціною (згодом квитки почали поширюватися через газети, їх вирізали);
+                    p.circle У картки вболівальниками вносилися ті результати майбутніх матчів «ігри номер один», які, на їхню думку, були вірогіднішими;
+                    p.circle Купони передавалися агенту-збиральнику пулів або відправлялися до компанії-організатора поштою.
+                    p.retreat1 Спеціалізована контора гарантувала, що протягом тижня буде щонайменше один пе
+                    p.retreat2 Спеціалізована контора гарантувала, що протягом тижня буде щонайменше один пе
                     p Ставки на футбол – рекомендований варіант для новачків світу беттінга.
                     p.circle За межами стадіонів фанати купували за мінімальною ціною (згодом квитки почали поширюватися через газети, їх вирізали);
                     p.circle У картки вболівальниками вносилися ті результати майбутніх матчів «ігри номер один», які, на їхню думку, були вірогіднішими;

@@ -37,6 +37,16 @@ body
   flex-direction: column
   align-items: center
   overflow: hidden
+  padding-bottom: 20px
+  &__bottom
+    color: $white
+    max-width: 95%
+    width: 768px
+    text-align: center
+    opacity: .5
+    font-size: 12px
+    font-family: $font-roboto-cond-reg
+    margin-top: 20px
 
 .welcome
   min-width: 1280px
@@ -44,6 +54,8 @@ body
   height: 340px
   background: url("../img/welcome/bg.png") no-repeat 50% 0/cover
   position: relative
+  @media screen and (max-width: 600px)
+    background: url("../img/welcome/bg-mob.jpg") no-repeat 50% 0/cover
   &::after
     content: ""
     display: block
@@ -313,6 +325,229 @@ body
         background: url("../img/prize/move-arrow-hover.png") no-repeat 50% 50%/contain
     &-right
       transform: scale(-1, 1)
+.box
+  height: 600px
+  min-width: 1160px
+  max-width: 1160px
+  display: flex
+  flex-direction: column
+  align-items: center
+  position: relative
+  padding-right: 70px
+  &__right
+    align-self: flex-end
+    z-index: 2
+    width: 525px
+    height: 295px
+    margin-top: auto
+    background: url("../img/box/progress-bg.png") no-repeat 50% 50%/contain
+    padding: 40px 35px 50px 60px
+    &-mob
+      .box__right-info
+        display: none
+    &-title
+      font-family: $font-fav-display-med-reg
+      font-size: 18px
+    &-wrap
+      display: flex
+      align-items: center
+      margin-left: -17px
+    &-info
+      color: $white
+      max-width: 185px
+      font-family: $font-roboto-cond-reg
+      font-size: 14px
+    &-bottom
+      margin-left: -24px
+      display: flex
+      align-items: center
+      &-icon
+        width: 14px
+        height: 14px
+        background: url("../img/box/magenta-info.png") no-repeat 50% 50%/contain
+        margin-right: 12px
+      &-text
+        font-family: $font-roboto-cond-reg
+        color: $white
+        font-size: 14px
+        padding: 8px 8px 9px 8px
+        position: relative
+        background: linear-gradient(90deg, rgba(255, 38, 126, 0.30) 0%, rgba(255, 38, 126, 0.00) 100%)
+        &::before
+          content: ""
+          display: block
+          position: absolute
+          left: 0
+          top: 0
+          width: 3px
+          height: 100%
+          box-shadow: 0 0 5px 0 #FF267E
+          background: $magenta
+
+  &__left
+    position: absolute
+    width: 670px
+    height: 600px
+    background: url("../img/box/bg-box.png") no-repeat 50% 50%/contain
+    left: 60px
+    top: 0
+    z-index: 1
+    @media screen and (max-width: 1050px)
+      background: url("../img/box/bg-box-mob.png") no-repeat 50% 50%/contain
+      width: 335px
+      height: 300px
+  &__coins
+    width: 100%
+    height: 100%
+    z-index: 1
+    &-item
+      position: absolute
+      &:nth-child(1)
+        max-width: 145px
+        top: 62px
+        left: 102px
+        animation-delay: .2s
+        animation: float 2.5s ease-in-out infinite
+        @media screen and (max-width: 1050px)
+          max-width: 73px
+          top: 31px
+          left: 51px
+      &:nth-child(2)
+        max-width: 90px
+        left: 180px
+        top: 114px
+        animation-delay: .4s
+        animation: float 3.1s ease-in-out infinite
+        @media screen and (max-width: 1050px)
+          max-width: 50px
+          top: 57px
+          left: 90px
+      &:nth-child(3)
+        max-width: 80px
+        right: 207px
+        top: 62px
+        animation-delay: .6s
+        animation: float 3s ease-in-out infinite
+        @media screen and (max-width: 1050px)
+          max-width: 40px
+          right: 104px
+          top: 31px
+      &:nth-child(4)
+        max-width: 167px
+        top: 36px
+        right: 144px
+        animation-delay: .2s
+        animation: float 3.5s ease-in-out infinite
+        @media screen and (max-width: 1050px)
+          max-width: 84px
+          right: 72px
+          top: 18px
+      &:nth-child(5)
+        max-width: 116px
+        top: 240px
+        right: 148px
+        animation-delay: .3s
+        animation: float 2.9s ease-in-out infinite
+        @media screen and (max-width: 1050px)
+          max-width: 58px
+          top: 120px
+          right: 74px
+      &:nth-child(6)
+        max-width: 140px
+        left: 136px
+        bottom: 190px
+        animation-delay: .1s
+        animation: float 2.8s ease-in-out infinite
+        @media screen and (max-width: 1050px)
+          max-width: 55px
+          left: 68px
+          bottom: 96px
+      &:nth-child(7)
+        max-width: 239px
+        left: 70px
+        bottom: 85px
+        animation-delay: .5s
+        animation: float 3.2s ease-in-out infinite
+        @media screen and (max-width: 1050px)
+          max-width: 120px
+          left: 35px
+          bottom: 43px
+  &__logo
+    width: 355px
+    height: 290px
+    position: absolute
+    left: 49%
+    top: 40px
+    transform: translate(-50%, 0)
+    z-index: 0
+    background: url("../img/box/logo.png") no-repeat 50% 50%/contain
+    @media screen and (max-width: 1050px)
+      background: url("../img/box/logo-mob.png") no-repeat 50% 50%/contain
+      width: 177px
+      height: 145px
+      top: 20px
+  &__open
+    max-width: 185px
+    position: absolute
+    left: 50%
+    bottom: 228px
+    transform: translate(-50%, 0)
+    z-index: 2
+    &-cap
+      max-width: 178px
+      position: relative
+      top: 39px
+      left: 11px
+    &-body
+      max-width: 100%
+  &__bottom
+    z-index: 3
+    height: 155px
+    margin-top: 20px
+    margin-left: 70px
+    display: flex
+    align-items: center
+    &-left, &-right
+      width: 415px
+      height: 125px
+      display: flex
+      align-items: center
+      justify-content: center
+      background: url("../img/box/play-bg.png") no-repeat 50% 50%/cover
+      background-size: 100% 100%
+      @media screen and (max-width: 600px)
+        background: url("../img/box/play-bg-mob.png") no-repeat 50% 50%/cover
+        background-size: 100% 100%
+    &-icon
+      max-width: 155px
+    &-separator
+      max-width: 85px
+  &__progress
+    display: flex
+    align-items: center
+    margin-top: 10px
+    &-body
+      width: 345px
+      height: 25px
+      border: 2px solid #D7F5F2
+      padding: 2px
+      filter: drop-shadow(0 0 4px #5DF9C9) drop-shadow(0 0 4px #9BFFE0)
+    &-bar
+      height: 100%
+      width: 24%
+      background: #D7F5F2
+    &-counter
+      margin-left: 25px
+      font-family: $font-fav-display-med-reg
+  &__last
+    display: flex
+    align-items: center
+    margin-top: 12px
+    &-text, &-date
+      color: $white
+      font-size: 12px
+      font-family: $font-roboto-cond-reg
+
 // loader
 
 .spinner-overlay
@@ -320,7 +555,7 @@ body
   top: 0
   left: 0
   width: 100%
-  height: 100%
+  height: 100vh
   background-color: $white
   display: flex
   justify-content: center
@@ -427,9 +662,9 @@ body
 
 
 .drop
-  max-width: 605px
-  width: 100%
-  margin: 0 auto
+  max-width: 768px
+  width: 95%
+  margin: 12px auto 0 auto
   border-radius: 10px
   position: relative
   z-index: 5
@@ -437,15 +672,15 @@ body
     color: $white
     font-size: 10px
     line-height: 16px
-    //font-family: $font-suisse-intl-reg
+    font-family: $font-roboto-cond-reg
     text-align: center
     margin-bottom: 15px
   .dropdown[open] summary::before
     transform:  rotate(180deg)
   summary
     list-style: none
-    padding: 8px 15px
-    //font-family: $font-suisse-intl-reg
+    padding: 4px 15px 12px 0
+    font-family: $font-roboto-cond-bold
     font-size: 14px
     cursor: pointer
     background-size: 100% 100%
@@ -453,15 +688,17 @@ body
     align-items: center
     justify-content: space-between
     color: $white
+    height: 33px
+    border-bottom: 1px solid #9299AF
     @media screen and (max-width: 600px)
       font-size: 14px
       line-height: 22px
     &::before
       content: ""
       display: block
-      min-width: 20px
+      min-width: 12px
       height: 12px
-      //background: url("../img/arrow-drop.png") no-repeat 0 0/contain
+      background: url("../img/arrow-drop.png") no-repeat 0 0/contain
       order: 2
 
   &-txt
@@ -469,7 +706,7 @@ body
     margin-top: 10px
     max-height: 350px
     overflow-y: auto
-    border: 1px solid $white
+    //border: 1px solid $white
     scrollbar-width: auto
     &::-webkit-scrollbar-thumb
       background: $green
@@ -521,19 +758,17 @@ body
             opacity: .2
           &-item
             //background: rgba($white, .05)
-            background: rgba(0, 0, 0, 0.20)
-            border-radius: 8px
             display: flex
             align-items: center
+            border-bottom: 1px solid #404C77
           .content-date, .content-prize, .content-status
             color: $white
-            //font-family: $font-favbet-text-reg
-            font-size: 16px
-            line-height: 26px
+            font-family: $font-roboto-cond-reg
+            font-size: 14px
+            line-height: 22px
             br
               display: none
             @media screen and (max-width: 600px)
-
               &:nth-child(1)
                 font-size: 14px
                 line-height: 20px
@@ -567,29 +802,36 @@ body
         th
           padding: 0 5px
       p, strong, a
-        font-size: 16px
-        line-height: 26px
-        //font-family: $font-suisse-intl-reg
+        font-size: 14px
+        line-height: 22px
+        font-family: $font-roboto-cond-reg
         color: $white
-        @media screen and (max-width: 600px)
-          font-size: 14px
-          line-height: 22px
       span
-        //font-family: $font-suisse-intl-reg
+        font-family: $font-roboto-cond-reg
         display: block
       tr,td
-        //font-family: $font-suisse-intl-reg
+        font-family: $font-roboto-cond-reg
       td
         padding-left: 5px
 
 
+
+//contents styles
+
 .retreat1
-  padding-left: 30px
+  padding-left: 20px
   strong
     font-family: $font-roboto-cond-bold
     color: $white
+
+.retreat2
+  padding-left: 40px
+  strong
+    font-family: $font-roboto-cond-bold
+    color: $white
+
 .circle
-  padding-left: 35px
+  padding-left: 20px
   &:before
     content: ''
     width: 5px
@@ -597,7 +839,17 @@ body
     background: $white
     border-radius: 50%
     display: inline-block
-    margin: 0 4px 2px 0
+    margin: 0 8px 3px 0
+
+@media screen and (max-width: 600px)
+  .circle
+    padding-left: 15px
+  .retreat1
+    padding-left: 15px
+  .retreat2
+    padding-left: 30px
+
+//contents styles
 
 
 body.dark
@@ -615,3 +867,11 @@ body.dark
     transform: scale(.8)
   100%
     transform: scale(1)
+
+@keyframes float
+  0%
+    transform: translateY(0)
+  50%
+    transform: translateY(-10px)
+  100%
+    transform: translateY(0)
