@@ -1,3 +1,16 @@
+button.menu-btn menu
+.menu-test
+    button.open-box open box
+    button.lng-btn en
+    button.auth-btn auth
+    button.popups-btn menu popups
+    .menu-popup.hide
+        button(onclick=`openPopupByAttr('preloader')`) preloader
+        - for (let i = 1; i <= 12; i++)
+            button(onclick=`openPopupByAttr('prize${i}')`) приз #{i}
+        - for (let i = 1; i <= 12; i++)
+            button(onclick=`openPopupByAttr('infoPrize${i}')`) слайд #{i}
+
 .fav-page.loading
     .spinner-overlay
         .spinner
@@ -66,7 +79,7 @@
             .cards
                 //- Картка 1
                 .card._left2
-                    .card__popup
+                    .card__popup(data-popup="infoPrize1")
                     picture.card__img
                         source(media="(max-width: 600px)" srcset='img/prize/prize1-mob.png')
                         source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize1-mob.png')
@@ -76,7 +89,7 @@
 
                 //- Картка 2
                 .card._left1
-                    .card__popup
+                    .card__popup(data-popup="infoPrize2")
                     picture.card__img
                         source(media="(max-width: 600px)" srcset='img/prize/prize2-mob.png')
                         source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize2-mob.png')
@@ -86,7 +99,7 @@
 
                 //- Картка 3
                 .card._active
-                    .card__popup
+                    .card__popup(data-popup="infoPrize3")
                     picture.card__img
                         source(media="(max-width: 600px)" srcset='img/prize/prize3-mob.png')
                         source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize3-mob.png')
@@ -96,7 +109,7 @@
 
                 //- Картка 4
                 .card._right1
-                    .card__popup
+                    .card__popup(data-popup="infoPrize4")
                     picture.card__img
                         source(media="(max-width: 600px)" srcset='img/prize/prize4-mob.png')
                         source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize4-mob.png')
@@ -106,7 +119,7 @@
 
                 //- Картка 5
                 .card._right2
-                    .card__popup
+                    .card__popup(data-popup="infoPrize5")
                     picture.card__img
                         source(media="(max-width: 600px)" srcset='img/prize/prize5-mob.png')
                         source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize5-mob.png')
@@ -116,7 +129,7 @@
 
                 //- Картка 6
                 .card
-                    .card__popup
+                    .card__popup(data-popup="infoPrize6")
                     picture.card__img
                         source(media="(max-width: 600px)" srcset='img/prize/prize6-mob.png')
                         source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize6-mob.png')
@@ -126,7 +139,7 @@
 
                 //- Картка 7
                 .card
-                    .card__popup
+                    .card__popup(data-popup="infoPrize7")
                     picture.card__img
                         source(media="(max-width: 600px)" srcset='img/prize/prize7-mob.png')
                         source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize7-mob.png')
@@ -136,7 +149,7 @@
 
                 //- Картка 8
                 .card
-                    .card__popup
+                    .card__popup(data-popup="infoPrize8")
                     picture.card__img
                         source(media="(max-width: 600px)" srcset='img/prize/prize8-mob.png')
                         source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize8-mob.png')
@@ -146,7 +159,7 @@
 
                 //- Картка 9
                 .card
-                    .card__popup
+                    .card__popup(data-popup="infoPrize9")
                     picture.card__img
                         source(media="(max-width: 600px)" srcset='img/prize/prize9-mob.png')
                         source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize9-mob.png')
@@ -155,7 +168,7 @@
 
                 //- Картка 10
                 .card
-                    .card__popup
+                    .card__popup(data-popup="infoPrize10")
                     picture.card__img
                         source(media="(max-width: 600px)" srcset='img/prize/prize10-mob.png')
                         source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize10-mob.png')
@@ -163,7 +176,7 @@
                     .card__text(data-translate="textPrize10") Страховка ставки ХХХХ
                 //- Картка 11
                 .card
-                    .card__popup
+                    .card__popup(data-popup="infoPrize11")
                     picture.card__img
                         source(media="(max-width: 600px)" srcset='img/prize/prize11-mob.png')
                         source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize11-mob.png')
@@ -171,7 +184,7 @@
                     .card__text(data-translate="textPrize11") Пощастить наступний раз
                 //- Картка 12
                 .card
-                    .card__popup
+                    .card__popup(data-popup="infoPrize12")
                     picture.card__img
                         source(media="(max-width: 600px)" srcset='img/prize/prize12-mob.png')
                         source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize12-mob.png')
@@ -230,11 +243,11 @@
                 .box__last-text(data-translate="lastUpd") Oстаннє оновлення:
                 .box__last-date ХХ.ХХ.2025 о хх:хх
             .box__right-wrap
-                a.box__btn.btn.unauth-msg(data-translate="authBtn" href="/login") авторизуйся
+                a.box__btn.btn.unauth-msg.hide(data-translate="authBtn" href="/login") авторизуйся
                 button.box__btn.btn.part-btn.hide(data-translate="joinBtn") взяти участь
-                button.box__btn.btn-open.play-btn.hide
-                    span.box__btn-text(data-translate="openBtn") відкрити
-                    span.box__btn-counter(data-translate="openCounter") 2 відкриття
+                button.box__btn.btn-open.play-btn
+                    span.btn-open-text(data-translate="openBtn") відкрити
+                    span.btn-open-counter(data-translate="openCounter") 2 відкриття
                 button.box_btn.btn.deposit-btn.hide(data-translate="depositBtn") зробити депозит
                 .box__right-info(data-translate="boxInfo") Кожна 1 000 ₴ виграшних ставок = 1 відкриття Фавбоксу.
             .box__right-mob
@@ -349,3 +362,256 @@
                     p.circle Купони передавалися агенту-збиральнику пулів або відправлялися до компанії-організатора поштою.
                     p Спеціалізована контора гарантувала, що протягом тижня буде щонайменше один переможець. Щасливчики визначалися за кількістю набраних балів серед усіх фанатів, які надіслали картки.
     .fav-page__bottom(data-translate="bottomText") *Загальний призовий фонд акції «ВСЕСВІТ ГРИ» складається з бонусних пропозицій та фізичних призів на загальну суму до 10 000 000 ₴. Вид, формат та розмір бонусних пропозицій (та/або подарунків) визначається і пропонується учасникам виключно на розсуд Організатора. Деталі на сайті www.favbet.ua. Період дії акції – з ХХ.08.2025 до ХХ.09.2025 року
+    .popups.opacity-overlay
+        //- Попап 1
+        .popup(data-popup="prize1")
+            .popup__wrap
+                .popup__title.title(data-translate="popupTitle") Твій виграш
+                .card
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize1-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize1-mob.png')
+                        img(src="img/prize/prize1.png" alt="Favbet")
+                    .card__text(data-translate="textPrize1") Навушники SteelSeries Arctis
+                    .card__close
+                .popup__connect
+                    .popup__connect-icon
+                    .popup__connect-text(data-translate="popupConnectText") Наша команда звʼяжеться з тобою для уточнення всіх деталей.
+                button.popup__btn.btn.hide(data-translate="playMoreBtn") Грати ще
+                button.popup__btn.btn-open.play-btn
+                    span.btn-open-text(data-translate="openBtn") відкрити
+                    span.btn-open-counter(data-translate="openCounter") 2 відкриття
+
+        //- Попап 2
+        .popup(data-popup="prize2")
+            .popup__wrap
+                .popup__title.title(data-translate="popupTitle") Твій виграш
+                .card
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize2-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize2-mob.png')
+                        img(src="img/prize/prize2.png" alt="Favbet")
+                    .card__text(data-translate="textPrize2") Консоль Nintendo Switch 2
+                    .card__close
+                .popup__connect
+                    .popup__connect-icon
+                    .popup__connect-text(data-translate="popupConnectText") Наша команда звʼяжеться з тобою для уточнення всіх деталей.
+                button.popup__btn.btn.hide(data-translate="playMoreBtn") Грати ще
+                button.popup__btn.btn-open.play-btn
+                    span.btn-open-text(data-translate="openBtn") відкрити
+                    span.btn-open-counter(data-translate="openCounter") 2 відкриття
+
+        //- Попап 3
+        .popup(data-popup="prize3")
+            .popup__wrap
+                .popup__title.title(data-translate="popupTitle") Твій виграш
+                .card
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize3-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize3-mob.png')
+                        img(src="img/prize/prize3.png" alt="Favbet")
+                    .card__text(data-translate="textPrize3") Телефон Apple iPhone 16 Pro Max
+                    .card__close
+                .popup__connect
+                    .popup__connect-icon
+                    .popup__connect-text(data-translate="popupConnectText") Наша команда звʼяжеться з тобою для уточнення всіх деталей.
+                button.popup__btn.btn.hide(data-translate="playMoreBtn") Грати ще
+                button.popup__btn.btn-open.play-btn
+                    span.btn-open-text(data-translate="openBtn") відкрити
+                    span.btn-open-counter(data-translate="openCounter") 2 відкриття
+
+        //- Попап 4
+        .popup(data-popup="prize4")
+            .popup__wrap
+                .popup__title.title(data-translate="popupTitle") Твій виграш
+                .card
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize4-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize4-mob.png')
+                        img(src="img/prize/prize4.png" alt="Favbet")
+                    .card__text(data-translate="textPrize4") Окуляри віртуальної реальності PS VR2
+                    .card__close
+                .popup__connect
+                    .popup__connect-icon
+                    .popup__connect-text(data-translate="popupConnectText") Наша команда звʼяжеться з тобою для уточнення всіх деталей.
+                button.popup__btn.btn.hide(data-translate="playMoreBtn") Грати ще
+                button.popup__btn.btn-open.play-btn
+                    span.btn-open-text(data-translate="openBtn") відкрити
+                    span.btn-open-counter(data-translate="openCounter") 2 відкриття
+
+        //- Попап 5
+        .popup(data-popup="prize5")
+            .popup__wrap
+                .popup__title.title(data-translate="popupTitle") Твій виграш
+                .card
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize5-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize5-mob.png')
+                        img(src="img/prize/prize5.png" alt="Favbet")
+                    .card__text(data-translate="textPrize5") Ігрова приставка PlayStation 5 Slim
+                    .card__close
+                .popup__connect
+                    .popup__connect-icon
+                    .popup__connect-text(data-translate="popupConnectText") Наша команда звʼяжеться з тобою для уточнення всіх деталей.
+                button.popup__btn.btn.hide(data-translate="playMoreBtn") Грати ще
+                button.popup__btn.btn-open.play-btn
+                    span.btn-open-text(data-translate="openBtn") відкрити
+                    span.btn-open-counter(data-translate="openCounter") 2 відкриття
+
+        //- Попап 6
+        .popup(data-popup="prize6")
+            .popup__wrap
+                .popup__title.title(data-translate="popupTitle") Твій виграш
+                .card
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize6-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize6-mob.png')
+                        img(src="img/prize/prize6.png" alt="Favbet")
+                    .card__text(data-translate="textPrize6") Ноутбук Gigabyte Aorus 16X 9SG
+                    .card__close
+                .popup__connect
+                    .popup__connect-icon
+                    .popup__connect-text(data-translate="popupConnectText") Наша команда звʼяжеться з тобою для уточнення всіх деталей.
+                button.popup__btn.btn.hide(data-translate="playMoreBtn") Грати ще
+                button.popup__btn.btn-open.play-btn
+                    span.btn-open-text(data-translate="openBtn") відкрити
+                    span.btn-open-counter(data-translate="openCounter") 2 відкриття
+
+        //- Попап 7
+        .popup(data-popup="prize7")
+            .popup__wrap
+                .popup__title.title(data-translate="popupTitle") Твій виграш
+                .card
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize7-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize7-mob.png')
+                        img(src="img/prize/prize7.png" alt="Favbet")
+                    .card__text(data-translate="textPrize7") Електросамокат Proove Model X-City
+                    .card__close
+                .popup__connect
+                    .popup__connect-icon
+                    .popup__connect-text(data-translate="popupConnectText") Наша команда звʼяжеться з тобою для уточнення всіх деталей.
+                button.popup__btn.btn.hide(data-translate="playMoreBtn") Грати ще
+                button.popup__btn.btn-open.play-btn
+                    span.btn-open-text(data-translate="openBtn") відкрити
+                    span.btn-open-counter(data-translate="openCounter") 2 відкриття
+
+        //- Попап 8
+        .popup(data-popup="prize8")
+            .popup__wrap
+                .popup__title.title(data-translate="popupTitle") Твій виграш
+                .card
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize8-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize8-mob.png')
+                        img(src="img/prize/prize8.png" alt="Favbet")
+                    .card__text(data-translate="textPrize8") Телевізор Samsung OLED 77
+                    .card__close
+                .popup__connect
+                    .popup__connect-icon
+                    .popup__connect-text(data-translate="popupConnectText") Наша команда звʼяжеться з тобою для уточнення всіх деталей.
+                button.popup__btn.btn.hide(data-translate="playMoreBtn") Грати ще
+                button.popup__btn.btn-open.play-btn
+                    span.btn-open-text(data-translate="openBtn") відкрити
+                    span.btn-open-counter(data-translate="openCounter") 2 відкриття
+
+        //- Попап 9
+        .popup(data-popup="prize9")
+            .popup__wrap
+                .popup__title.title(data-translate="popupTitle") Твій виграш
+                .card
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize9-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize9-mob.png')
+                        img(src="img/prize/prize9.png" alt="Favbet")
+                    .card__text(data-translate="textPrize9") ХХ FS
+                    .card__close
+                button.popup__btn.btn.hide(data-translate="playMoreBtn") Грати ще
+                button.popup__btn.btn-open.play-btn
+                    span.btn-open-text(data-translate="openBtn") відкрити
+                    span.btn-open-counter(data-translate="openCounter") 2 відкриття
+
+        //- Попап 10
+        .popup(data-popup="prize10")
+            .popup__wrap
+                .popup__title.title(data-translate="popupTitle") Твій виграш
+                .card
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize10-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize10-mob.png')
+                        img(src="img/prize/prize10.png" alt="Favbet")
+                    .card__text(data-translate="textPrize10") Страховка ставки ХХХХ
+                    .card__close
+                button.popup__btn.btn.hide(data-translate="playMoreBtn") Грати ще
+                button.popup__btn.btn-open.play-btn
+                    span.btn-open-text(data-translate="openBtn") відкрити
+                    span.btn-open-counter(data-translate="openCounter") 2 відкриття
+
+        //- Попап 11
+        .popup(data-popup="prize11")
+            .popup__wrap
+                .popup__title.title(data-translate="popupTitle") Твій виграш
+                .card
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize11-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize11-mob.png')
+                        img(src="img/prize/prize11.png" alt="Favbet")
+                    .card__text(data-translate="textPrize11") Пощастить наступний раз
+                    .card__close
+                button.popup__btn.btn.hide(data-translate="playMoreBtn") Грати ще
+                button.popup__btn.btn-open.play-btn
+                    span.btn-open-text(data-translate="openBtn") відкрити
+                    span.btn-open-counter(data-translate="openCounter") 2 відкриття
+
+        //- Попап 12
+        .popup(data-popup="prize12")
+            .popup__wrap
+                .popup__title.title(data-translate="popupTitle") Твій виграш
+                .card
+                    picture.card__img
+                        source(media="(max-width: 600px)" srcset='img/prize/prize12-mob.png')
+                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize12-mob.png')
+                        img(src="img/prize/prize12.png" alt="Favbet")
+                    .card__text(data-translate="textPrize12") Відкрити ще
+                    .card__close
+                button.popup__btn.btn.hide(data-translate="playMoreBtn") Грати ще
+                button.popup__btn.btn-open.play-btn
+                    span.btn-open-text(data-translate="openBtn") відкрити
+                    span.btn-open-counter(data-translate="openCounter") 2 відкриття
+
+
+        //prize preloader
+
+        .popup.popup--preloader(data-popup="preloader")
+            .card
+                .card__inner.is-hide
+                    .card__front
+                        img(src='img/logo-green.png' alt="favbet")
+                .card__inner.card__inner--prize.is-hide
+                    .card__front
+                        img(src='img/logo-blue.png' alt="favbet")
+                    - for (let i = 1; i <= 12; i++)
+                        .card__back.hide(data-prize=`prize${i}`)
+                            picture.card__img
+                                source(media="(max-width: 600px)" srcset=`img/prize/prize${i}-mob.png`)
+                                source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset=`img/prize/prize${i}-mob.png`)
+                                img(src=`img/prize/prize${i}.png` alt="Favbet")
+                            .card__text(data-translate=`textPrize${i}`) Навушники SteelSeries Arctis
+
+                .card__inner.is-hide
+                    .card__front
+                        img(src='img/logo-red.png' alt="favbet")
+
+        //prize preloader
+
+        /// info prize popups
+
+        - for (let i = 1; i <= 12; i++)
+            .popup.popup--info(data-popup=`infoPrize${i}`)
+                .popup__wrap
+                    .popup__close
+                    .popup__title(data-translate=`infoTitlePrize${i}`) Консоль Nintendo Switch 2 + Mario Kart World (слайд #{i})
+                    .popup__scroll
+                        .popup__text(data-translate=`infoTextPrize${i}`) Процесор: спеціальний процесор від NVIDIA. Підтримка: HDR10, VRR до 120 Гц. Провідний зв’язок: у ТВ-режимі можна підключити через дротовий LAN-порт на док-станції. Максимальна роздільна здатність: 3840 × 2160 (4K) при 60 FPS (у ТВ-режимі); 120 FPS при виборі роздільної здатності 1920×1080 або 2560 × 1440; у портативному та настільному режимі максимальна роздільна здатність — 1920 × 1080. Час зарядки: близько 3 годин (у режимі сну). Габарити: 114 x 272 x 14 мм (з підключеними контролерами Joy-Con 2). Платформа: Nintendo Switch. Тип: портативні. Обсяг вбудованої пам'яті: 256 ГБ. Максимальна підтримувана роздільна здатність: 1920 х 1080 (Full HD). Ігрові консолі: Nintendo. Особливості: З сенс
+
+

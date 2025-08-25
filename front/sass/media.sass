@@ -1,3 +1,8 @@
+@media screen and (min-width: 2000px)
+  .popup
+    &--preloader
+      .card
+        transform: scale(2.5)
 @media screen and (max-width: 1050px)
   .welcome
      &__wrap
@@ -64,12 +69,24 @@
     margin: -40px 0 -20px 0
 
 @media screen and (max-width: 600px)
+  .popup
+    &--preloader
+      .card
+        transform: scale(1)
   .title
     text-shadow: -0.548px -0.548px 0 rgba(250, 15, 99, 0.80), 0.548px 0.548px 0 rgba(0, 255, 246, 0.90), 0 0 15.335px rgba(0, 192, 255, 0.90)
-  .btn
-    min-width: 145px
-    min-height: 52px
-    font-size: 12px
+  .welcome, .prize, .box
+    .btn
+      min-width: 145px
+      min-height: 52px
+      font-size: 12px
+    .btn-open
+      min-width: 135px
+      min-height: 47px
+      font-size: 12px
+      &-counter
+        font-size: 9px
+        padding: 1px 2px
   .welcome
     max-width: 505px
     min-width: 505px
@@ -240,21 +257,37 @@
     max-width: 400px
     min-width: 400px
     height: 150px
-  .card
-    min-width: 114px
-    max-width: 114px
-    height: 150px
-    &__text
-      font-size: 12px
-      max-width: 105px
-    &__amount
-      font-size: 9px
-      margin-top: 4px
-    &__popup
-      width: 16px
-      height: 16px
-      right: 4px
-      top: 4px
+    .card
+      min-width: 114px
+      max-width: 114px
+      height: 150px
+      &__text
+        font-size: 12px
+        max-width: 105px
+      &__amount
+        font-size: 9px
+        margin-top: 4px
+      &__popup
+        width: 16px
+        height: 16px
+        right: 4px
+        top: 4px
+  .drop
+    &-txt
+      padding: 5px
+  .popup
+    .card
+      position: static
+      &__close
+        right: 10px
+        top: 10px
+        transform: none
+
+@media screen and (max-width: 385px)
+  .popup
+    &--preloader
+      .card
+          transform: scale(.9)
 
 @media screen and (max-width: 376px)
   .welcome
@@ -270,3 +303,7 @@
   .box
     transform: scale(.8)
     margin: -60px 0 -40px 0
+  .popup
+    &--preloader
+      .card
+        transform: scale(.85)

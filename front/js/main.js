@@ -51,7 +51,14 @@
         unauthMsgs = document.querySelectorAll('.unauth-msg'),
         participateBtns = document.querySelectorAll('.part-btn'),
         redirectBtns = document.querySelectorAll('.btn-join'),
-        loader = document.querySelector(".spinner-overlay")
+        loader = document.querySelector(".spinner-overlay"),
+        cardPopupIcons = document.querySelectorAll('.card__popup'),
+        preloader = document.querySelector('.popup--preloader'),
+        preloaderCards = preloader.querySelectorAll('.card__inner'),
+        preloaderPrize = preloader.querySelector('.card__inner--prize'),
+        box = document.querySelector('.box__open'),
+        logoBox = document.querySelector('.box__logo'),
+        boxCap = document.querySelector('.box__open-cap')
 
     const ukLeng = document.querySelector('#ukLeng');
     const enLeng = document.querySelector('#enLeng');
@@ -130,17 +137,82 @@
         }
 
         function quickCheckAndRender() {
-            checkUserAuth()
-                .then(loadUsers)
-                .then(() =>{
-                    setTimeout(hideLoader, 300);
-                    document.querySelectorAll(".table__tabs-item").forEach((tab, i) =>{
-                        tab.classList.remove('active');
-                        if(i === activeWeek - 1) tab.classList.add('active');
-                    })
-                    // renderUsers(activeWeek, tableData);
-                    participateBtns.forEach(btn => btn.addEventListener('click', participate));
+            // checkUserAuth()
+            //     .then(loadUsers)
+            //     .then(() =>{
+            //         setTimeout(hideLoader, 300);
+            //         document.querySelectorAll(".table__tabs-item").forEach((tab, i) =>{
+            //             tab.classList.remove('active');
+            //             if(i === activeWeek - 1) tab.classList.add('active');
+            //         })
+            //         // renderUsers(activeWeek, tableData);
+            //         participateBtns.forEach(btn => btn.addEventListener('click', participate));
+            //     })
+
+
+            // shakeUntil(box, getUserPrize, logoBox).then(res =>{
+            //     showPreloader(res);
+            // })
+
+            updateSlider()
+
+            // showPrizeForPreloader("prize1")
+
+            document.querySelectorAll('.card__inner').forEach(card => {
+                card.addEventListener('click', () => {
+                    card.classList.toggle('is-flipped');
+                });
+            });
+
+
+
+            buttonsLeft.forEach(btn  => {
+                btn.addEventListener('click', () => {
+                    moveSlider(-1);
+                    btn.style.pointerEvents = 'none';
+                    setTimeout(() => { btn.style.pointerEvents = 'initial'; }, 1000);
                 })
+            })
+            buttonsRight.forEach(btn  => {
+                btn.addEventListener('click', () => {
+                    moveSlider(1);
+                    btn.style.pointerEvents = 'none';
+                    setTimeout(() => { btn.style.pointerEvents = 'initial'; }, 1000);
+                })
+            })
+
+            slider.addEventListener('mousedown', handleStart);
+            slider.addEventListener('touchstart', handleStart);
+
+            document.addEventListener('mousemove', handleMove);
+            document.addEventListener('touchmove', handleMove);
+
+            document.addEventListener('mouseup', handleEnd);
+            document.addEventListener('touchend', handleEnd);
+
+            document.querySelector('.popups').addEventListener('click', (e) => {
+                const openPopupEl = document.querySelector('.popup.active');
+                if(openPopupEl){
+                    const contentWrap = openPopupEl.querySelector('.popup__wrap');
+                    const closeBtn = openPopupEl.querySelector('.card__close') ?? openPopupEl.querySelector('.popup__close');
+                    if (contentWrap && !contentWrap.contains(e.target)) {
+                        closeAllPopups();
+                    }
+                    if(e.target === closeBtn) {
+                        closeAllPopups();
+                    }
+                }
+
+            });
+
+            cardPopupIcons.forEach(icon => {
+                icon.addEventListener('click', function (){
+                    const dataAttr = this.getAttribute("data-popup")
+                    openPopupByAttr(dataAttr);
+                })
+
+            })
+
             }
 
         const waitForUserId = new Promise((resolve) => {
@@ -176,6 +248,117 @@
             });
     }
 
+    // function showPrizeByDataAttr(dataAttr) {
+    //     const cards = preloaderPrize.querySelectorAll('.card__inner');
+    //
+    //     cards.forEach(card => {
+    //         const back = card.querySelectorAll('.card__back')
+    //         back.forEach(item => {
+    //             item.classList.add('hide');
+    //             if(item.getAttribute("data-prize") === dataAttr) {
+    //                 item.classList.remove("hide")
+    //             }
+    //         })
+    //
+    //
+    //     })
+    //
+    // }
+
+
+    function clearPreloaderState(){
+        const allCardsInner = document.querySelectorAll('.card__inner'),
+            allCardBack = document.querySelectorAll('.card__back'),
+            popupPreloader = document.querySelector('.popup--preloader');
+
+        allCardsInner.forEach(card => {
+            card.classList.remove('is-flipped');
+            card.classList.add('is-hide');
+        })
+        popupPreloader.classList.remove('active');
+
+        allCardBack.forEach((card) => {
+            card.classList.add('hide');
+        })
+
+    }
+
+    function showPreloader(prize) {
+            openPopupByAttr('preloader')
+            showPrizeByDataAttr(prize)
+            setTimeout(() => {
+                preloaderCards.forEach((card, i) => {
+                    setTimeout(() =>{
+                        card.classList.remove('is-hide');
+                    }, i * 250)
+                    setTimeout(() =>{
+                        preloaderPrize.classList.add('is-flipped');
+                        setTimeout(() =>{
+                            clearPreloaderState()
+                            setTimeout(() =>{
+                                openPopupByAttr(prize)
+                            }, 800)
+                        }, 2000)
+                    }, 1250)
+                })
+            }, 200);
+    }
+    // showPreloader();
+
+    function getUserPrize() {
+        return new Promise(resolve => {
+            setTimeout(() => resolve('prize1'), 1000); // тут отримуєм приз який випав юзеру
+        });
+    }
+
+
+    function shakeUntil(el, waitPromise, logo, opts = {}) {
+        const { amplitude = 4, duration = 500, axis = 'x' } = opts;
+        let stop;
+
+        if (logo){
+            logo.classList.add('active');
+        }
+
+        if (el.animate) {
+            const keyframes = axis === 'x'
+                ? [{ transform: 'translateX(0)' }, { transform: `translateX(-${amplitude}px)` }, { transform: `translateX(${amplitude}px)` }, { transform: 'translateX(0)' }]
+                : [{ transform: 'translateY(0)' }, { transform: `translateY(-${amplitude}px)` }, { transform: `translateY(${amplitude}px)` }, { transform: 'translateY(0)' }];
+            const anim = el.animate(keyframes, { duration, iterations: Infinity, easing: 'linear' });
+            stop = () => {
+                anim.cancel();
+                el.style.transform = '';
+                if (logo){
+                    setTimeout(() =>{
+                        logo.classList.remove('active');
+                    }, 4000)
+                }
+            };
+        } else {
+            let start = null, rafId = 0, running = true;
+            const loop = t => {
+                if (start === null) start = t;
+                const phase = ((t - start) % duration) / duration * Math.PI * 2;
+                const delta = Math.sin(phase) * amplitude;
+                el.style.transform = axis === 'x' ? `translateX(${delta}px)` : `translateY(${delta}px)`;
+                if (running) rafId = requestAnimationFrame(loop);
+            };
+            rafId = requestAnimationFrame(loop);
+            stop = () => {
+                running = false;
+                cancelAnimationFrame(rafId); el.style.transform = '';
+                if (logo){
+                    setTimeout(() =>{
+                        logo.classList.remove('active');
+                    }, 4000)
+                }
+            };
+        }
+
+        return Promise.resolve(waitPromise).finally(() =>{
+            stop()
+        });
+    }
 
     function checkUserAuth() {
         console.log(userId)
@@ -394,6 +577,18 @@
         if (place <= 200) return `prize_${week}-176-200`;
     }
 
+    function showPrizeByDataAttr(prize){
+        const allPrizes = document.querySelectorAll('[data-prize]');
+        const currentPrize = document.querySelector(`[data-prize="${prize}"]`);
+
+        if (currentPrize && allPrizes) {
+            allPrizes.forEach(prize => {
+                prize.classList.add('hide');
+            })
+            currentPrize.classList.remove('hide');
+        }
+    }
+
     function participate() {
         if (!userId) {
             return;
@@ -467,7 +662,7 @@
     const buttonsRight = document.querySelectorAll('.prize__move-right'),
         buttonsLeft = document.querySelectorAll('.prize__move-left'),
         slider = document.querySelector('.cards'),
-        items = document.querySelectorAll('.card'),
+        items = slider.querySelectorAll('.card'),
         totalItems = items.length,
         dots = document.querySelectorAll('.prize__dots-item')
 
@@ -475,7 +670,6 @@
     let startX = 0;
     let isDragging = false;
 
-    updateSlider()
 
     function updateSlider() {
         items.forEach((item, index) => {
@@ -542,33 +736,102 @@
         isDragging = false;
     }
 
-    buttonsLeft.forEach(btn  => {
-        btn.addEventListener('click', () => {
-            moveSlider(-1);
-            btn.style.pointerEvents = 'none';
-            setTimeout(() => { btn.style.pointerEvents = 'initial'; }, 1000);
-        })
-    })
-    buttonsRight.forEach(btn  => {
-        btn.addEventListener('click', () => {
-            moveSlider(1);
-            btn.style.pointerEvents = 'none';
-            setTimeout(() => { btn.style.pointerEvents = 'initial'; }, 1000);
-        })
-    })
-
-    slider.addEventListener('mousedown', handleStart);
-    slider.addEventListener('touchstart', handleStart);
-
-    document.addEventListener('mousemove', handleMove);
-    document.addEventListener('touchmove', handleMove);
-
-    document.addEventListener('mouseup', handleEnd);
-    document.addEventListener('touchend', handleEnd);
-
 //slider
+
+    // function openPopupByAttr(popupAttr) {
+    //     const allPopups = document.querySelectorAll('.popup');
+    //     allPopups.forEach(p => p.classList.remove('active'));
+    //     document.body.style.overflow = 'hidden';
+    //
+    //     console.log(popupAttr);
+    //
+    //     const targetPopup = document.querySelector(`.popup[data-popup="${popupAttr}"]`);
+    //     if (targetPopup) {
+    //         targetPopup.classList.add('active');
+    //         document.querySelector('.popups').classList.remove('opacity');
+    //     }
+    // }
+
+    function closeAllPopups() {
+        document.querySelectorAll('.popup').forEach(p => p.classList.remove('active'));
+        document.querySelector('.popups').classList.add('opacity-overlay');
+        document.body.style.overflow = 'auto';
+    }
+
+    function initOpenBox(){
+        shakeUntil(box, getUserPrize(), logoBox).then(prize => {
+            boxCap.classList.add("open");
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    boxCap.classList.remove("open");
+                    resolve(prize);
+                }, 2000);
+            });
+        }).then(prize => {
+            showPreloader(prize);
+        });
+    }
+
 
     // loadTranslations()
     //     .then(init) // запуск ініту сторінки
 
+    init()
+
+    // /// test
+
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelector(".menu-btn")?.addEventListener("click", () => {
+            document.querySelector(".menu-test")?.classList.toggle("hide");
+        });
+    });
+
+    const lngBtn = document.querySelector(".lng-btn")
+
+    lngBtn.addEventListener("click", () => {
+        if (sessionStorage.getItem("locale")) {
+            sessionStorage.removeItem("locale");
+        } else {
+            sessionStorage.setItem("locale", "en");
+        }
+        window.location.reload();
+    });
+
+    const authBtn = document.querySelector(".auth-btn")
+
+    authBtn.addEventListener("click", () =>{
+        if(userId){
+            sessionStorage.removeItem("userId")
+        }else{
+            sessionStorage.setItem("userId", "100300268")
+        }
+        window.location.reload()
+    });
+
+    const popupsMenu = document.querySelector(".popups-btn");
+
+    popupsMenu.addEventListener("click", () => {
+        document.querySelector(".menu-popup").classList.toggle("hide");
+    })
+
+    document.querySelector(".open-box").addEventListener("click", () =>{
+        initOpenBox();
+    })
+
 })();
+
+// після тесту видали цю функцію і розкоменти аналогічну в функції виклику
+function openPopupByAttr(popupAttr) {
+    const allPopups = document.querySelectorAll('.popup');
+    allPopups.forEach(p => p.classList.remove('active'));
+
+    console.log(popupAttr);
+
+    const targetPopup = document.querySelector(`.popup[data-popup="${popupAttr}"]`);
+    if (targetPopup) {
+        document.body.style.overflow = 'hidden';
+        targetPopup.classList.add('active');
+        document.querySelector('.popups').classList.remove('opacity-overlay');
+    }
+}
+

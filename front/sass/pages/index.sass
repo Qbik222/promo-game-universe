@@ -1,3 +1,33 @@
+//test
+.menu-btn
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 20
+  width: fit-content
+  background: white
+  padding: 3px
+
+.menu-popup
+  display: flex
+  flex-direction: column
+
+.menu-test
+  position: fixed
+  left: 0
+  top: 25px
+  z-index: 20
+  display: flex
+  gap: 2px
+  flex-direction: column
+  & > button
+    width: fit-content
+    background: white
+    color: black
+    padding: 2px
+    font-family: inherit
+    border-radius: 2px
+
 .hide
   display: none !important
 
@@ -19,6 +49,7 @@ body
   color: $white
   text-shadow: -1px -1px 0 rgba(250, 15, 99, 0.80), 1px 1px 0 rgba(0, 255, 246, 0.90), 0 0 28px rgba(0, 192, 255, 0.90)
 
+
 .btn
   display: flex
   align-items: center
@@ -30,6 +61,41 @@ body
   font-size: 17px
   text-transform: uppercase
   color: $white
+  transition: all .5s ease-in-out
+  &:hover
+    cursor: pointer
+    background: url("../img/btn-hover.png") no-repeat 50% 50%/contain
+
+.btn-open
+  display: flex
+  align-items: center
+  justify-content: center
+  background: url("../img/btn-open.png") no-repeat 50% 50%/contain
+  min-height: 65px
+  min-width: 220px
+  font-family: $font-roboto-cond-bold
+  font-size: 17px
+  text-transform: uppercase
+  color: $white
+  transition: all .5s ease-in-out
+  &:hover
+    background: url("../img/btn-open-hover.png") no-repeat 50% 50%/contain
+    cursor: pointer
+  &-text
+    font-family: inherit
+  &-counter
+    position: absolute
+    bottom: 0
+    left: 50%
+    transform: translateX(-50%)
+    font-size: 12px
+    text-transform: initial
+    color: $bg
+    font-family: $font-roboto-cond-reg
+    background: $white
+    border-radius: 2px
+    padding: 1px 4px
+
 
 .fav-page
   background: $bg
@@ -230,6 +296,20 @@ body
     font-size: 18px
     font-family: $font-roboto-cond-reg
     color: $white
+  &__close
+    position: absolute
+    right: -5px
+    top: 0
+    transform: translate(100%, 0)
+    width: 20px
+    height: 20px
+    background: url("../img/close-icon.png") no-repeat 50% 50%/contain
+    transition: all .5s ease-in-out
+    border-radius: 10px
+    border: 1px solid transparent
+    &:hover
+      cursor: pointer
+      border: 1px solid $white
 .cards
   min-width: 750px
   max-width: 750px
@@ -334,6 +414,8 @@ body
   align-items: center
   position: relative
   padding-right: 70px
+  &__btn
+    position: relative
   &__right
     align-self: flex-end
     z-index: 2
@@ -479,25 +561,31 @@ body
     left: 49%
     top: 40px
     transform: translate(-50%, 0)
+    transition: all 1.2s ease-in-out
     z-index: 0
     background: url("../img/box/logo.png") no-repeat 50% 50%/contain
     @media screen and (max-width: 1050px)
-      background: url("../img/box/logo-mob.png") no-repeat 50% 50%/contain
       width: 177px
       height: 145px
       top: 20px
+    &.active
+      background: url("../img/box/logo-active.png") no-repeat 50% 50%/contain
   &__open
     max-width: 185px
     position: absolute
-    left: 50%
+    left: 36%
+    //left: 50%
     bottom: 228px
-    transform: translate(-50%, 0)
+    //transform: translate(-50%, 0)
     z-index: 2
     &-cap
       max-width: 178px
       position: relative
       top: 39px
       left: 11px
+      transition: all 1s linear
+      &.open
+        transform: rotate(-25deg) translate(0, -50px)
     &-body
       max-width: 100%
   &__bottom
@@ -814,6 +902,190 @@ body
       td
         padding-left: 5px
 
+.popups
+  position: fixed
+  width: 100%
+  height: 100%
+  z-index: 10
+  background: rgba(#090A18, .7)
+  backdrop-filter: blur(3px)
+  transition: all .6s ease-in-out
+  &.opacity-overlay
+    opacity: 0
+    pointer-events: none
+    z-index: 0
+
+
+.popup
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%, -50%)
+  display: flex
+  flex-direction: column
+  align-items: center
+  width: 100%
+  height: 100%
+  justify-content: center
+  opacity: 0
+  transition: all .6s ease-in-out
+  pointer-events: none
+  &__wrap
+    display: inherit
+    flex-direction: inherit
+    align-items: inherit
+    width: fit-content
+    height: fit-content
+  &.active
+    opacity: 1
+    pointer-events: initial
+  .card
+    position: relative
+  &__title
+    font-family: $font-fav-display-med-reg
+    font-size: 32px
+    margin-bottom: 20px
+  &__btn
+    margin-top: 10px
+    position: relative
+  &__connect
+    max-width: 260px
+    display: flex
+    flex-direction: column
+    align-items: center
+    margin-top: 24px
+    &-icon
+      width: 27px
+      height: 27px
+      background: url("../img/connect-icon.png") no-repeat 0 0/contain
+      box-shadow: 0 0 5px 0 $magenta
+      border-radius: 20px
+      z-index: 2
+    &-text
+      background: linear-gradient(180deg, rgba(255, 38, 126, 0.30) 0%, rgba(255, 38, 126, 0.00) 100%)
+      padding: 20px 20px 16px 16px
+      color: $white
+      font-family: $font-roboto-cond-reg
+      font-size: 14px
+      position: relative
+      margin-top: -15px
+      &::before
+        content: ""
+        display: block
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        background: $magenta
+        height: 2px
+        box-shadow: 0 0 5px 0 $magenta
+  &--info
+    .popup
+      &__close
+        position: absolute
+        right: 8px
+        top: 8px
+        width: 20px
+        height: 20px
+        background: url("../img/close-icon.png") no-repeat 50% 50%/contain
+        transition: all .5s ease-in-out
+        border-radius: 10px
+        border: 1px solid transparent
+        &:hover
+          cursor: pointer
+          border: 1px solid $white
+      &__title
+        text-align: center
+        font-size: 24px
+        font-family: $font-roboto-cond-bold
+        color: $white
+      &__text
+        font-family: $font-roboto-cond-reg
+        color: $white
+        font-size: 16px
+        line-height: 26px
+        height: fit-content
+      &__scroll
+        overflow: auto
+        max-height: 330px
+        padding-right: 10px
+        &::-webkit-scrollbar
+          width: 2px
+          background: $white
+        &::-webkit-scrollbar-thumb
+          width: 2px
+          background: $green
+      &__wrap
+        padding: 32px 24px 24px 24px
+        width: 95%
+        max-height: 400px
+        background: #2C3969
+        border-radius: 6px
+        position: relative
+        @media screen and (max-width: 600px)
+          max-height: 500px
+  &--preloader
+    .card
+      perspective: 1000px
+      background: transparent
+      flex-direction: row
+      align-items: center
+      justify-content: center
+      width: 100%
+      min-width: 380px
+      height: 100%
+      gap: 10px
+      transform: scale(1.5)
+      &__inner
+        width: 115px
+        height: 150px
+        position: relative
+        transform-style: preserve-3d
+        transition: all 0.8s ease-in-out
+        cursor: pointer
+        background: url("../img/prize/bg-active.png") no-repeat 50% 50%/cover
+        background-size: 100% 100%
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        &.is-flipped
+          transform: rotateY(180deg)
+        &.is-hide
+          transform: rotateY(-90deg) scale(.5)
+          opacity: 0
+
+      &__front, &__back
+        position: absolute
+        width: 100%
+        height: 100%
+        backface-visibility: hidden
+        border-radius: 16px
+        overflow: hidden
+        display: flex
+        flex-direction: column
+
+
+      &__front
+        display: flex
+        align-items: center
+        justify-content: center
+        max-width: 93px
+        margin-left: 5px
+        margin-bottom: 5px
+
+      &__back
+        transform: rotateY(180deg)
+        display: flex
+        align-items: center
+        justify-content: flex-end
+        padding: 5px 5px 8px 5px
+        .card__text
+          font-size: 12px
+          max-width: 140px
+        .card__img
+          margin-bottom: auto
+
 
 
 //contents styles
@@ -850,6 +1122,7 @@ body
     padding-left: 30px
 
 //contents styles
+
 
 
 body.dark
