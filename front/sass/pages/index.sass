@@ -204,26 +204,31 @@ body
         max-width: 426px
         left: -11px
         bottom: -17px
+        animation: float 2.5s ease-in-out infinite
       &--coins-front
         z-index: 5
         max-width: 488px
         left: -32px
         bottom: 15px
+        animation: float 3.5s ease-in-out infinite
       &--box-left
         z-index: 2
         max-width: 322px
         left: -260px
         bottom: -90px
+        animation: float 4.5s ease-in-out infinite
       &--box
         z-index: 2
         right: 210px
         top: 110px
         max-width: 51px
+        animation: float 5.5s ease-in-out infinite
       &--coin
         z-index: 2
         left: -280px
         top: -61px
         max-width: 165px
+        animation: float 3s ease-in-out infinite
       &--left
         z-index: 3
         max-width: 197px
@@ -269,6 +274,9 @@ body
   align-self: center
   justify-content: flex-start
   transition: all .5s ease-in-out
+  .glitch
+    &__layers
+      display: none
   &__popup
     display: none
     width: 32px
@@ -334,6 +342,9 @@ body
       z-index: 3
       .card__popup
         display: block
+      .glitch
+        &__layers
+          display: block
     &._right1
       opacity: 1
       transform: translate(-50%, -50%) rotateY(-20deg) scale(.9)
@@ -564,6 +575,7 @@ body
     transition: all 1.2s ease-in-out
     z-index: 0
     background: url("../img/box/logo.png") no-repeat 50% 50%/contain
+    animation: 6s logoBlick ease-in-out infinite
     @media screen and (max-width: 1050px)
       width: 177px
       height: 145px
@@ -612,6 +624,7 @@ body
       max-width: 155px
     &-separator
       max-width: 85px
+      opacity: 0
   &__progress
     display: flex
     align-items: center
@@ -1150,3 +1163,117 @@ body.dark
     transform: translateY(-10px)
   100%
     transform: translateY(0)
+
+@keyframes logoBlick
+  0%, 100%
+    background: url("../img/box/logo.png") no-repeat 50% 50%/contain
+  25%
+    background: url("../img/box/logo-active.png") no-repeat 50% 50%/contain
+  65%
+    background: url("../img/box/logo.png") no-repeat 50% 50%/contain
+
+
+
+.glitch
+  overflow: hidden
+  img
+    position: relative
+    z-index: 1
+    display: block
+  &__layers
+    position: absolute
+    z-index: 5
+    width: 110%
+    height: 110%
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+    pointer-events: none
+  &__layer
+    position: absolute
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+    width: 100%
+    height: 100%
+    background: url("../img/prize/glitch.png") no-repeat 0 0/contain
+    &:nth-child(1)
+      transform: translateX(-5%)
+      animation: glitch-anim-1 2s infinite linear alternate
+    &:nth-child(2)
+      transform: translateX(3%) translateY(3%)
+      animation: glitch-anim-2 2.3s -.8s infinite linear alternate
+    &:nth-child(3)
+      transform: translateX(5%)
+      animation: glitch-anim-flash 1.2s infinite linear
+    &:nth-child(4)
+      transform: translateX(-6%)
+      animation: glitch-anim-1 2.5s infinite linear alternate
+    &:nth-child(5)
+      transform: translateX(-10%) translateY(3%)
+      animation: glitch-anim-2 2s -.6s infinite linear alternate
+    &:nth-child(6)
+      transform: translateX(1%)
+      animation: glitch-anim-flash .9s infinite linear
+
+@keyframes glitch-anim-1
+  0%
+    clip-path: polygon(0 0%, 100% 0%, 100% 5%, 0 5%)
+    opacity: 1
+  10%
+    clip-path: polygon(0 15%, 100% 15%, 100% 15%, 0 15%)
+  20%
+    clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%)
+  30%
+    clip-path: polygon(0 1%, 100% 1%, 100% 2%, 0 2%)
+  40%
+    clip-path: polygon(0 35%, 100% 35%, 100% 35%, 0 35%)
+  50%
+    clip-path: polygon(0 45%, 100% 45%, 100% 46%, 0 46%)
+  60%
+    clip-path: polygon(0 50%, 100% 50%, 100% 70%, 0 70%)
+  70%
+    clip-path: polygon(0 70%, 100% 70%, 100% 70%, 0 70%)
+  80%
+    clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%)
+  90%
+    clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%)
+  100%
+    clip-path: polygon(0 60%, 100% 60%, 100% 70%, 0 70%)
+    opacity: 1
+
+@keyframes glitch-anim-2
+  0%
+    clip-path: polygon(0 15%, 100% 15%, 100% 30%, 0 30%)
+    opacity: 1
+  15%
+    clip-path: polygon(0 3%, 100% 3%, 100% 3%, 0 3%)
+  25%
+    clip-path: polygon(0 8%, 100% 8%, 100% 20%, 0 20%)
+  30%
+    clip-path: polygon(0 20%, 100% 20%, 100% 20%, 0 20%)
+  45%
+    clip-path: polygon(0 45%, 100% 45%, 100% 45%, 0 45%)
+  50%
+    clip-path: polygon(0 50%, 100% 50%, 100% 57%, 0 57%)
+  65%
+    clip-path: polygon(0 60%, 100% 60%, 100% 60%, 0 60%)
+  75%
+    clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%)
+  80%
+    clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%)
+  95%
+    clip-path: polygon(0 45%, 100% 45%, 100% 60%, 0 60%)
+  100%
+    clip-path: polygon(0 11%, 100% 11%, 100% 15%, 0 15%)
+    opacity: 1
+
+@keyframes glitch-anim-flash
+  0%
+    opacity: .2
+    display: block
+  30%, 100%
+    opacity: 0
+    display: block
