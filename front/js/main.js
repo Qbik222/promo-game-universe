@@ -235,16 +235,6 @@
             .then(json => {
                 i18nData = json;
                 translate();
-                const mutationObserver = new MutationObserver(function (mutations) {
-                    mutationObserver.disconnect();
-                    translate();
-                    mutationObserver.observe(targetNode, { childList: true, subtree: true });
-                });
-                mutationObserver.observe(document.getElementById("hardcoreTennis"), {
-                    childList: true,
-                    subtree: true
-                });
-
             });
     }
 
