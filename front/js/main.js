@@ -1,6 +1,6 @@
 (function () {
 
-    const apiURL = 'https://fav-prom.com/api_your_promo'
+    const apiURL = 'https://fav-prom.com/api_game_universe'
 
     const getActiveWeek = (promoStartDate, weekDuration) => {
         const currentDate = new Date();
@@ -72,8 +72,8 @@
 
     let loaderBtn = false
 
-    let locale = "en"
-    // let locale = sessionStorage.getItem("locale") || "uk"
+    // let locale = "en"
+    let locale = sessionStorage.getItem("locale") || "uk"
 
     if (ukLeng) locale = 'uk';
     if (enLeng) locale = 'en';
@@ -84,8 +84,8 @@
 
     let i18nData = {};
     const translateState = true;
-    let userId = null;
-    // let userId = Number(sessionStorage.getItem("userId")) ?? null
+    // let userId = null;
+    let userId = Number(sessionStorage.getItem("userId")) ?? null
 
     const request = function (link, extraOptions) {
         return fetch(apiURL + link, {
@@ -102,14 +102,14 @@
             .catch(err => {
                 console.error('API request failed:', err);
 
-                reportError(err);
-
-                document.querySelector('.fav-page').style.display = 'none';
-                if (window.location.href.startsWith("https://www.favbet.hr/")) {
-                    window.location.href = '/promocije/promocija/stub/';
-                } else {
-                    window.location.href = '/promos/promo/stub/';
-                }
+                // reportError(err);
+                //
+                // document.querySelector('.fav-page').style.display = 'none';
+                // if (window.location.href.startsWith("https://www.favbet.hr/")) {
+                //     window.location.href = '/promocije/promocija/stub/';
+                // } else {
+                //     window.location.href = '/promos/promo/stub/';
+                // }
 
                 return Promise.reject(err);
             });
@@ -435,6 +435,7 @@
     }
 
     function refreshLocalizedClass(element) {
+        const baseCssClass = ""
         if (!element) {
             return;
         }
@@ -773,10 +774,10 @@
     }
 
 
-    // loadTranslations()
-    //     .then(init) // запуск ініту сторінки
+    loadTranslations()
+        .then(init) // запуск ініту сторінки
 
-    init()
+    // init()
 
     // /// test
 
