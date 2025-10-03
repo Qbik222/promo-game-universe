@@ -78,7 +78,7 @@
     if (ukLeng) locale = 'uk';
     if (enLeng) locale = 'en';
 
-    let debug = true
+    let debug = false
 
     if (debug) hideLoader()
 
@@ -137,6 +137,7 @@
         }
 
         function quickCheckAndRender() {
+            setTimeout(hideLoader, 600);
             // checkUserAuth()
             //     .then(loadUsers)
             //     .then(() =>{
