@@ -231,7 +231,7 @@
     }
 
     function loadTranslations() {
-        return request(`/new-translates/${locale}`)
+        return request(`/new-translates/${locale}?nocache=1`)
             .then(json => {
                 i18nData = json;
                 translate();

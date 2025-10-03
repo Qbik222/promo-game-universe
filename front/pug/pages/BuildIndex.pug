@@ -8,7 +8,7 @@ button.menu-btn menu
         button(onclick=`openPopupByAttr('preloader')`) preloader
         - for (let i = 1; i <= 12; i++)
             button(onclick=`openPopupByAttr('prize${i}')`) приз #{i}
-        - for (let i = 1; i <= 12; i++)
+        - for (let i = 1; i <= 10; i++)
             button(onclick=`openPopupByAttr('infoPrize${i}')`) слайд #{i}
 
 .fav-page.loading
@@ -78,7 +78,7 @@ button.menu-btn menu
         .prize__slider
             .cards
                 //- Картка 1
-                .card._left2
+                .card
                     .glitch__layers
                         .glitch__layer
                         .glitch__layer
@@ -92,7 +92,7 @@ button.menu-btn menu
                     .card__amount(data-translate="amountPrize1") 15 штук
 
                 //- Картка 2
-                .card._left1
+                .card
                     .glitch__layers
                         .glitch__layer
                         .glitch__layer
@@ -105,22 +105,8 @@ button.menu-btn menu
                     .card__text(data-translate="textPrize2") Консоль Nintendo Switch 2
                     .card__amount(data-translate="amountPrize2") 10 штук
 
-                //- Картка 3
-                .card._active
-                    .glitch__layers
-                        .glitch__layer
-                        .glitch__layer
-                        .glitch__layer
-                    .card__popup(data-popup="infoPrize3")
-                    picture.card__img
-                        source(media="(max-width: 600px)" srcset='img/prize/prize3-mob.png')
-                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize3-mob.png')
-                        img(src="img/prize/prize3.png" alt="Favbet")
-                    .card__text(data-translate="textPrize3") Телефон Apple iPhone 16 Pro Max
-                    .card__amount(data-translate="amountPrize3") 5 штук
-
                 //- Картка 4
-                .card._right1
+                .card
                     .glitch__layers
                         .glitch__layer
                         .glitch__layer
@@ -133,8 +119,21 @@ button.menu-btn menu
                     .card__text(data-translate="textPrize4") Окуляри віртуальної реальності PS VR2
                     .card__amount(data-translate="amountPrize4") 10 штук
 
+                //- Картка 3
+                .card
+                   .glitch__layers
+                       .glitch__layer
+                       .glitch__layer
+                       .glitch__layer
+                   .card__popup(data-popup="infoPrize3")
+                   picture.card__img
+                       source(media="(max-width: 600px)" srcset='img/prize/prize3-mob.png')
+                       source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize3-mob.png')
+                       img(src="img/prize/prize3.png" alt="Favbet")
+                   .card__text(data-translate="textPrize3") Телефон Apple iPhone 16 Pro Max
+                   .card__amount(data-translate="amountPrize3") 5 штук
                 //- Картка 5
-                .card._right2
+                .card
                     .glitch__layers
                         .glitch__layer
                         .glitch__layer
@@ -214,30 +213,6 @@ button.menu-btn menu
                         source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize10-mob.png')
                         img(src="img/prize/prize10.png" alt="Favbet")
                     .card__text(data-translate="textPrize10") Страховка ставки ХХХХ
-                //- Картка 11
-                .card
-                    .glitch__layers
-                        .glitch__layer
-                        .glitch__layer
-                        .glitch__layer
-                    .card__popup(data-popup="infoPrize11")
-                    picture.card__img
-                        source(media="(max-width: 600px)" srcset='img/prize/prize11-mob.png')
-                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize11-mob.png')
-                        img(src="img/prize/prize11.png" alt="Favbet")
-                    .card__text(data-translate="textPrize11") Пощастить наступний раз
-                //- Картка 12
-                .card
-                    .glitch__layers
-                        .glitch__layer
-                        .glitch__layer
-                        .glitch__layer
-                    .card__popup(data-popup="infoPrize12")
-                    picture.card__img
-                        source(media="(max-width: 600px)" srcset='img/prize/prize12-mob.png')
-                        source(media="(max-width: 950px) and (max-width: 600px) and (orientation: landscape)" srcset='img/prize/prize12-mob.png')
-                        img(src="img/prize/prize12.png" alt="Favbet")
-                    .card__text(data-translate="textPrize12") Відкрити ще
             .prize__move
                 .prize__move-left
                 .prize__move-right
@@ -313,7 +288,7 @@ button.menu-btn menu
             .box__bottom-right
                 .box__bottom-icon
                     img(src="img/box/icon-sport.png" alt="favbet")
-                a.box__bottom-btn.btn(data-translate="sportBtn" href="#") ставити на спорт
+                a.box__bottom-btn.btn(data-translate="sportBtn" href="#")
     .drop.drop--spins
         details.dropdown
             summary(data-translate="mySpins") Історія відкритих Фавбоксів
@@ -375,14 +350,14 @@ button.menu-btn menu
                     .no-spins.hide(data-translate="noBets") &#8203;
     .drop
         details.dropdown
-            summary(data-translate="openGuideBtn") Як відкрити Фавбокс
+            summary(data-translate="openGuideBtn")
             .drop-txt
                 .drop-txt-list(data-translate="openGuide")
-                    p Ставки на футбол – рекомендований варіант для новачків світу беттінга.
-                    p.circle За межами стадіонів фанати купували за мінімальною ціною (згодом квитки почали поширюватися через газети, їх вирізали);
-                    p.circle У картки вболівальниками вносилися ті результати майбутніх матчів «ігри номер один», які, на їхню думку, були вірогіднішими;
-                    p.circle Купони передавалися агенту-збиральнику пулів або відправлялися до компанії-організатора поштою.
-                    p Спеціалізована контора гарантувала, що протягом тижня буде щонайменше один переможець. Щасливчики визначалися за кількістю набраних балів серед усіх фанатів, які надіслали картки.
+    .drop
+        details.dropdown
+            summary(data-translate="progressbarbtn")
+            .drop-txt
+                .drop-txt-list(data-translate="progressbarinfo")
     .drop
         details.dropdown
             summary(data-translate="bonusInfoBtn") Які бонуси та фізичні призи я можу отримати?
@@ -409,7 +384,7 @@ button.menu-btn menu
                     p.circle У картки вболівальниками вносилися ті результати майбутніх матчів «ігри номер один», які, на їхню думку, були вірогіднішими;
                     p.circle Купони передавалися агенту-збиральнику пулів або відправлялися до компанії-організатора поштою.
                     p Спеціалізована контора гарантувала, що протягом тижня буде щонайменше один переможець. Щасливчики визначалися за кількістю набраних балів серед усіх фанатів, які надіслали картки.
-    .fav-page__bottom(data-translate="bottomText") *Загальний призовий фонд акції «ВСЕСВІТ ГРИ» складається з бонусних пропозицій та фізичних призів на загальну суму до 10 000 000 ₴. Вид, формат та розмір бонусних пропозицій (та/або подарунків) визначається і пропонується учасникам виключно на розсуд Організатора. Деталі на сайті www.favbet.ua. Період дії акції – з ХХ.08.2025 до ХХ.09.2025 року
+    .fav-page__bottom(data-translate="bottomText")
     .popups.opacity-overlay
         //- Попап 1
         .popup(data-popup="prize1")
@@ -574,6 +549,9 @@ button.menu-btn menu
                         img(src="img/prize/prize9.png" alt="Favbet")
                     .card__text(data-translate="textPrize9") ХХ FS
                     .card__close
+                .popup__connect
+                    .popup__connect-icon
+                    .popup__connect-text(data-translate="popupBonusText") Наша команда звʼяжеться з тобою для уточнення всіх деталей.
                 button.popup__btn.btn.hide(data-translate="playMoreBtn") Грати ще
                 button.popup__btn.btn-open.play-btn
                     span.btn-open-text(data-translate="openBtn") відкрити
@@ -590,6 +568,9 @@ button.menu-btn menu
                         img(src="img/prize/prize10.png" alt="Favbet")
                     .card__text(data-translate="textPrize10") Страховка ставки ХХХХ
                     .card__close
+                .popup__connect
+                    .popup__connect-icon
+                    .popup__connect-text(data-translate="popupBonusText") Наша команда звʼяжеться з тобою для уточнення всіх деталей.
                 button.popup__btn.btn.hide(data-translate="playMoreBtn") Грати ще
                 button.popup__btn.btn-open.play-btn
                     span.btn-open-text(data-translate="openBtn") відкрити
