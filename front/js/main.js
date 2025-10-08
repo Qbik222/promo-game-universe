@@ -58,7 +58,7 @@
         preloaderPrize = preloader.querySelector('.card__inner--prize'),
         box = document.querySelector('.box__open'),
         logoBox = document.querySelector('.box__logo'),
-        boxCap = document.querySelector('.box__open-cap')
+        boxCap = document.querySelector('.box__open-cap');
 
     const ukLeng = document.querySelector('#ukLeng');
     const enLeng = document.querySelector('#enLeng');
@@ -164,6 +164,7 @@
 
         function quickCheckAndRender() {
             setTimeout(hideLoader, 600);
+            box.addEventListener('click', initOpenBox);
             // checkUserAuth()
             //     .then(loadUsers)
             //     .then(() =>{
@@ -777,6 +778,7 @@
         document.querySelectorAll('.popup').forEach(p => p.classList.remove('active'));
         document.querySelector('.popups').classList.add('opacity-overlay');
         document.body.style.overflow = 'auto';
+        mainPage.classList.remove('overlay');
     }
 
     function initOpenBox(){
@@ -841,7 +843,9 @@
 
 })();
 
-// після тесту видали цю функцію і розкоменти аналогічну в функції виклику
+const mainPage2 = document.querySelector('.fav-page')
+
+// після тесту видали цю функцію і розкоменти аналогічну в функції виклику  mainPage2 > mainPage
 function openPopupByAttr(popupAttr) {
     const allPopups = document.querySelectorAll('.popup');
     allPopups.forEach(p => p.classList.remove('active'));
@@ -851,6 +855,7 @@ function openPopupByAttr(popupAttr) {
     const targetPopup = document.querySelector(`.popup[data-popup="${popupAttr}"]`);
     if (targetPopup) {
         document.body.style.overflow = 'hidden';
+        mainPage2.classList.add('overlay');
         targetPopup.classList.add('active');
         document.querySelector('.popups').classList.remove('opacity-overlay');
     }

@@ -266,7 +266,8 @@
         max-width: 105px
       &__amount
         font-size: 9px
-        margin-top: 4px
+        margin-top: 3px
+        margin-bottom: 2px
       &__popup
         &::before
           width: 16px
@@ -308,3 +309,25 @@
     &--preloader
       .card
         transform: scale(.85)
+
+@media screen and (max-width: 950px) and (max-height: 700px) and (min-height: 500px) and (orientation: landscape)
+  .popup
+    transform-origin: left top
+    scale: .84
+
+@media screen and (max-width: 950px) and (max-height: 450px) and (orientation: landscape)
+  .popup
+    scale: .7
+    transform-origin: left top
+    &--info
+      scale: 1
+      .popup__wrap
+        max-height: 90vh
+
+@media screen and (max-width: 950px) and (max-height: 400px) and (orientation: landscape)
+  .popup
+    scale: .6
+
+@media screen and (max-width: 950px) and (max-height: 360px) and (orientation: landscape)
+  .popup
+    scale: .5

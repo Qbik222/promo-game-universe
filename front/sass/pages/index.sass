@@ -104,6 +104,24 @@ body
   align-items: center
   overflow: hidden
   padding-bottom: 20px
+  &::before
+    content: ""
+    pointer-events: none
+    opacity: 0
+    transition: all .6s ease-in-out
+
+  &.overlay
+    overflow: hidden
+    &::before
+      content: ""
+      height: 120vh
+      width: 100%
+      position: fixed
+      opacity: 1
+      z-index: 8
+      background: rgba(#090A18, .7)
+      backdrop-filter: blur(3px)
+      pointer-events: initial
   &__bottom
     color: $white
     max-width: 95%
@@ -432,6 +450,7 @@ body
   padding-right: 70px
   &__btn
     position: relative
+    pointer-events: initial
   &__right
     align-self: flex-end
     z-index: 2
@@ -440,6 +459,7 @@ body
     margin-top: auto
     background: url("../img/box/progress-bg.png") no-repeat 50% 50%/contain
     padding: 40px 35px 50px 60px
+    pointer-events: none
     &-mob
       .box__right-info
         display: none
@@ -786,6 +806,10 @@ body
     margin-bottom: 15px
   .dropdown[open] summary::before
     transform:  rotate(180deg)
+  summary::-webkit-details-marker
+    display: none
+    > summary
+      list-style: none
   summary
     list-style: none
     padding: 4px 15px 12px 0
@@ -928,8 +952,8 @@ body
   width: 100%
   height: 100%
   z-index: 10
-  background: rgba(#090A18, .7)
-  backdrop-filter: blur(3px)
+  //background: rgba(#090A18, .7)
+  //backdrop-filter: blur(3px)
   transition: all .6s ease-in-out
   &.opacity-overlay
     opacity: 0
@@ -1094,6 +1118,7 @@ body
         max-width: 93px
         margin-left: 5px
         margin-bottom: 5px
+        z-index: 1
 
       &__back
         transform: rotateY(180deg)
@@ -1101,6 +1126,7 @@ body
         align-items: center
         justify-content: flex-end
         padding: 5px 5px 8px 5px
+        z-index: 2
         .card__text
           font-size: 12px
           max-width: 140px
