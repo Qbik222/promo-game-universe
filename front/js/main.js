@@ -87,6 +87,28 @@
     // let userId = null;
     let userId = Number(sessionStorage.getItem("userId")) ?? null
 
+    function createGlitchLayers(layers = 3, container = null) {
+        const wrap = document.createElement('div');
+        wrap.className = 'glitch__layers';
+        for (let i = 0; i < layers; i++) {
+            const layer = document.createElement('div');
+            layer.className = 'glitch__layer';
+            wrap.appendChild(layer);
+        }
+        if (container) {
+            const target = typeof container === 'string' ? document.querySelector(container) : container;
+            if (target) target.appendChild(wrap);
+        }
+        return wrap;
+    }
+
+    function removeGlitchLayers(container) {
+        const target = typeof container === 'string' ? document.querySelector(container) : container;
+        if (!target) return;
+        const glitch = target.querySelector('.glitch__layers');
+        if (glitch) glitch.remove();
+    }
+
     const request = function (link, extraOptions) {
         return fetch(apiURL + link, {
             headers: {
@@ -135,6 +157,10 @@
                 userId = window.g_user_id;
             }
         }
+
+
+
+
 
         function quickCheckAndRender() {
             setTimeout(hideLoader, 600);
@@ -675,7 +701,10 @@
 
             if (index === currentIndex) {
                 item.classList.add('_active');
+                createGlitchLayers(3, item)
                 return;
+            }else{
+                removeGlitchLayers( item)
             }
 
             if (distance === 1) {
